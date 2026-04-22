@@ -122,8 +122,8 @@ export default function Hero({ booted }: HeroProps) {
   }
 
   return (
-    <section style={{
-      padding: '80px 40px 100px',
+    <section id="hero" style={{
+      padding: '80px 40px 72px',
       maxWidth: 1200,
       margin: '0 auto',
       display: 'grid',
@@ -187,8 +187,8 @@ export default function Hero({ booted }: HeroProps) {
             fontFamily: 'var(--font-serif)',
             fontStyle: 'italic',
             fontWeight: 400,
-            fontSize: 18,
-            color: 'var(--fg-dim)',
+            fontSize: 22,
+            color: 'var(--gold)',
             maxWidth: 480,
           }}
         >

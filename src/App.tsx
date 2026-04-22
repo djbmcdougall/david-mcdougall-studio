@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react'
 import Cursor from './components/Cursor'
+import CursorTrail from './components/CursorTrail'
 import GrainOverlay from './components/GrainOverlay'
 import BootSequence from './components/BootSequence'
 import Nav from './components/Nav'
-import Ticker from './components/Ticker'
+import ClientLogos from './components/ClientLogos'
 import Hero from './components/Hero'
 import Showreel from './components/Showreel'
 import Pillars from './components/Pillars'
-import WorkGrid from './components/WorkGrid'
+import PortfolioGrid from './components/PortfolioGrid'
+import TravelSeries from './components/TravelSeries'
+import Writing from './components/Writing'
+import Testimonials from './components/Testimonials'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
 
@@ -21,6 +25,7 @@ export default function App() {
   return (
     <>
       <Cursor />
+      <CursorTrail />
       <GrainOverlay />
       {!booted && <BootSequence onComplete={() => setBooted(true)} />}
       <div
@@ -31,12 +36,15 @@ export default function App() {
         }}
       >
         <Nav />
-        <Ticker />
+        <ClientLogos />
         <main>
           <Hero booted={booted} />
           <Showreel />
           <Pillars />
-          <WorkGrid />
+          <PortfolioGrid />
+          <TravelSeries />
+          <Writing />
+          <Testimonials />
           <CTA />
         </main>
         <Footer />

@@ -8,18 +8,18 @@ const PILLARS = [
   },
   {
     num: '002',
-    title: 'Brand Design',
+    title: 'Brand Design & Identity',
     body: "Identity systems built around truth. No decoration without purpose. No logo without a story behind it.",
   },
   {
     num: '003',
-    title: 'Brand Story',
-    body: "Twenty years finding the real story in hostile places. Brands have them too. I find yours and make it impossible to ignore.",
+    title: 'Brand Story & Audience',
+    body: "Twenty years finding the real story in hostile places. Brands have them too. I find yours, then find exactly who needs to hear it.",
   },
   {
     num: '004',
-    title: 'Audience Intelligence',
-    body: "Investigative instincts meet distribution strategy. I know who's watching, why they care, and how to reach them.",
+    title: 'Broadcast & Documentary',
+    body: "BBC. Al Jazeera. Award-winning long-form. The credibility that no newcomer can fake and no brief can manufacture.",
   },
 ]
 

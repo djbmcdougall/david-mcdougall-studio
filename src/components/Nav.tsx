@@ -48,7 +48,7 @@ export default function Nav() {
 
       {/* Links */}
       <div style={{ display: 'flex', gap: 28 }}>
-        {['Work', 'Showreel', 'About', 'Contact'].map((label) => (
+        {['Work', 'Showreel', 'About', 'Writing', 'Contact'].map((label) => (
           <a
             key={label}
             href={`#${label.toLowerCase()}`}
