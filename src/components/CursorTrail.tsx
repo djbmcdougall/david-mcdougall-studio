@@ -1,191 +1,113 @@
 import { useEffect, useRef } from 'react'
-import * as THREE from 'three'
 
-const BUFFER_SIZE = 24
-const BASE_RADIUS = 3
-const MAX_RADIUS = 10
-
-function lerp(a: number, b: number, t: number) {
-  return a + (b - a) * t
+interface Point {
+  x: number
+  y: number
+  vx: number
+  vy: number
+  age: number
 }
 
-export default function CursorTrail() {
+export default function CursorTrail({ active }: { active: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const activeRef = useRef(false)
 
   useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
+    if (!active) return
+    const canvas = canvasRef.current!
+    const ctx = canvas.getContext('2d')!
+    let points: Point[] = []
+    let mouse = { x: -999, y: -999 }
+    let prevMouse = { x: -999, y: -999 }
+    let animId: number
 
-    // Renderer
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true })
-    renderer.setPixelRatio(window.devicePixelRatio)
-    renderer.setSize(window.innerWidth, window.innerHeight)
-    renderer.setClearColor(0x000000, 0)
-
-    const scene = new THREE.Scene()
-    const camera = new THREE.OrthographicCamera(
-      -window.innerWidth / 2,
-       window.innerWidth / 2,
-       window.innerHeight / 2,
-      -window.innerHeight / 2,
-      0.1,
-      1000,
-    )
-    camera.position.z = 100
-
-    // Position buffer (screen coords, will be converted)
-    const positions: THREE.Vector3[] = Array.from({ length: BUFFER_SIZE }, () =>
-      new THREE.Vector3(-9999, -9999, 0),
-    )
-    const smoothed: THREE.Vector3[] = positions.map((p) => p.clone())
-
-    let mouse = new THREE.Vector2(-9999, -9999)
-    let prevMouse = new THREE.Vector2(-9999, -9999)
-    let velocity = 0
-
-    const toScene = (x: number, y: number) =>
-      new THREE.Vector3(
-        x - window.innerWidth / 2,
-        -(y - window.innerHeight / 2),
-        0,
-      )
+    const resize = () => {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+    }
+    resize()
+    window.addEventListener('resize', resize)
 
     const onMove = (e: MouseEvent) => {
-      prevMouse.copy(mouse)
-      mouse.set(e.clientX, e.clientY)
-      velocity = Math.min(mouse.distanceTo(prevMouse), 40)
-      // Push to front, drop last
-      positions.unshift(toScene(e.clientX, e.clientY))
-      positions.pop()
+      prevMouse = { ...mouse }
+      mouse = { x: e.clientX, y: e.clientY }
+      const vx = mouse.x - prevMouse.x
+      const vy = mouse.y - prevMouse.y
+      points.unshift({ x: mouse.x, y: mouse.y, vx, vy, age: 0 })
+      if (points.length > 28) points = points.slice(0, 28)
     }
     window.addEventListener('mousemove', onMove)
 
-    // Create 3 tube meshes for R/G/B chromatic split
+    const COLORS = [
+      { r: 255, g: 20,  b: 60  },
+      { r: 0,   g: 255, b: 200 },
+      { r: 80,  g: 80,  b: 255 },
+    ]
     const OFFSETS = [
-      { color: 0xff2040, ox: -1.5, oy: 0.5 },
-      { color: 0x00ffcc, ox: 0,    oy: 0 },
-      { color: 0x4040ff, ox: 1.5,  oy: -0.5 },
+      { x: -3, y: -2 },
+      { x:  3, y:  2 },
+      { x:  0, y:  0 },
     ]
 
-    const tubes: THREE.Mesh[] = []
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    for (const def of OFFSETS) {
-      const mat = new THREE.MeshBasicMaterial({
-        color: def.color,
-        blending: THREE.AdditiveBlending,
-        transparent: true,
-        opacity: 0.85,
-        depthWrite: false,
-      })
-      const mesh = new THREE.Mesh(new THREE.BufferGeometry(), mat)
-      scene.add(mesh)
-      tubes.push(mesh)
-    }
+      points.forEach((p) => { p.age += 0.04 })
+      points = points.filter((p) => p.age < 1)
 
-    let rafId = 0
-    let stopped = false
-
-    const buildTube = (pts: THREE.Vector3[], radius: number): THREE.BufferGeometry => {
-      if (pts.length < 2) return new THREE.BufferGeometry()
-      try {
-        const curve = new THREE.CatmullRomCurve3(pts)
-        const geo = new THREE.TubeGeometry(curve, pts.length * 2, radius, 6, false)
-
-        // Taper UV-based: scale alpha via vertex color (opacity taper handled in shader-less way via per-mesh opacity)
-        return geo
-      } catch {
-        return new THREE.BufferGeometry()
-      }
-    }
-
-    const tick = () => {
-      if (stopped) return
-      rafId = requestAnimationFrame(tick)
-
-      // Smooth all positions
-      for (let i = 0; i < BUFFER_SIZE; i++) {
-        smoothed[i].lerp(positions[i], 0.22)
-      }
-
-      // Velocity decays
-      velocity = lerp(velocity, 0, 0.08)
-
-      const radius = lerp(BASE_RADIUS, MAX_RADIUS, Math.min(velocity / 40, 1))
-
-      // Filter out unset positions
-      const valid = smoothed.filter(
-        (p) => p.x > -window.innerWidth && p.y > -window.innerHeight,
-      )
-      if (valid.length < 4) {
-        renderer.render(scene, camera)
+      if (points.length < 2) {
+        animId = requestAnimationFrame(draw)
         return
       }
 
-      // Taper: progressively reduce radius from head to tail
-      const pts = valid.map((p, i) => p.clone())
+      COLORS.forEach((col, ci) => {
+        ctx.beginPath()
+        ctx.globalCompositeOperation = 'lighter'
 
-      OFFSETS.forEach((def, idx) => {
-        const offsetPts = pts.map((p, i) => {
-          const t = i / (pts.length - 1)
-          const r = lerp(radius, 0, t)
-          return new THREE.Vector3(
-            p.x + def.ox,
-            p.y + def.oy,
-            p.z + idx * 0.1,
+        const ox = OFFSETS[ci].x
+        const oy = OFFSETS[ci].y
+
+        ctx.moveTo(points[0].x + ox, points[0].y + oy)
+
+        for (let i = 1; i < points.length - 1; i++) {
+          const mx = (points[i].x + points[i + 1].x) / 2 + ox
+          const my = (points[i].y + points[i + 1].y) / 2 + oy
+          ctx.quadraticCurveTo(
+            points[i].x + ox,
+            points[i].y + oy,
+            mx, my,
           )
-        })
-
-        if (offsetPts.length >= 2) {
-          const geo = buildTube(offsetPts, radius * lerp(1, 0.05, 0))
-
-          // Dispose old geometry
-          tubes[idx].geometry.dispose()
-          tubes[idx].geometry = geo
         }
+
+        const grad = ctx.createLinearGradient(
+          points[0].x, points[0].y,
+          points[points.length - 1].x, points[points.length - 1].y,
+        )
+        grad.addColorStop(0,   `rgba(${col.r},${col.g},${col.b},0.9)`)
+        grad.addColorStop(0.4, `rgba(${col.r},${col.g},${col.b},0.4)`)
+        grad.addColorStop(1,   `rgba(${col.r},${col.g},${col.b},0)`)
+        ctx.strokeStyle = grad
+
+        const spd = Math.sqrt(points[0].vx ** 2 + points[0].vy ** 2)
+        ctx.lineWidth = Math.min(2 + spd * 0.18, 9)
+        ctx.lineCap = 'round'
+        ctx.lineJoin = 'round'
+        ctx.stroke()
       })
 
-      renderer.render(scene, camera)
+      ctx.globalCompositeOperation = 'source-over'
+      animId = requestAnimationFrame(draw)
     }
 
-    // IntersectionObserver — only run trail when hero is visible
-    const hero = document.getElementById('hero')
-    const observer = new IntersectionObserver(
-      (entries) => {
-        activeRef.current = entries[0].isIntersecting
-        for (const tube of tubes) {
-          tube.visible = activeRef.current
-        }
-      },
-      { threshold: 0 },
-    )
-    if (hero) observer.observe(hero)
-
-    tick()
-
-    const onResize = () => {
-      renderer.setSize(window.innerWidth, window.innerHeight)
-      camera.left = -window.innerWidth / 2
-      camera.right = window.innerWidth / 2
-      camera.top = window.innerHeight / 2
-      camera.bottom = -window.innerHeight / 2
-      camera.updateProjectionMatrix()
-    }
-    window.addEventListener('resize', onResize)
+    animId = requestAnimationFrame(draw)
 
     return () => {
-      stopped = true
-      cancelAnimationFrame(rafId)
+      cancelAnimationFrame(animId)
       window.removeEventListener('mousemove', onMove)
-      window.removeEventListener('resize', onResize)
-      if (hero) observer.unobserve(hero)
-      renderer.dispose()
-      for (const tube of tubes) {
-        tube.geometry.dispose()
-        ;(tube.material as THREE.Material).dispose()
-      }
+      window.removeEventListener('resize', resize)
+      // Clear canvas on unmount
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
     }
-  }, [])
+  }, [active])
 
   return (
     <canvas
@@ -193,8 +115,9 @@ export default function CursorTrail() {
       style={{
         position: 'fixed',
         inset: 0,
-        zIndex: 50,
         pointerEvents: 'none',
+        zIndex: 9995,
+        mixBlendMode: 'screen',
       }}
     />
   )

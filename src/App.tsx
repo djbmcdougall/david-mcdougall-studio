@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import Cursor from './components/Cursor'
-import CursorTrail from './components/CursorTrail'
 import GrainOverlay from './components/GrainOverlay'
 import BootSequence from './components/BootSequence'
 import Nav from './components/Nav'
@@ -25,7 +24,6 @@ export default function App() {
   return (
     <>
       <Cursor />
-      <CursorTrail />
       <GrainOverlay />
       {!booted && <BootSequence onComplete={() => setBooted(true)} />}
       <div
