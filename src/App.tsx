@@ -3,9 +3,10 @@ import Cursor from './components/Cursor'
 import GrainOverlay from './components/GrainOverlay'
 import BootSequence from './components/BootSequence'
 import Nav from './components/Nav'
+import Tagline from './components/Tagline'
+import Showreel from './components/Showreel'
 import ClientLogos from './components/ClientLogos'
 import Hero from './components/Hero'
-import Showreel from './components/Showreel'
 import Pillars from './components/Pillars'
 import PortfolioGrid from './components/PortfolioGrid'
 import TravelSeries from './components/TravelSeries'
@@ -34,10 +35,11 @@ export default function App() {
         }}
       >
         <Nav />
-        <ClientLogos />
         <main style={{ paddingTop: 84 }}>
-          <Hero booted={booted} />
+          <Tagline />
           <Showreel />
+          <ClientLogos />
+          <Hero booted={booted} />
           <Pillars />
           <PortfolioGrid />
           <TravelSeries />

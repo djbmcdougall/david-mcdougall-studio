@@ -216,28 +216,12 @@ export default function Hero({ booted }: HeroProps) {
             ))}
           </h1>
 
-          <motion.p
-            custom={1}
-            initial="hidden"
-            animate={booted ? 'show' : 'hidden'}
-            variants={fadeUp}
-            style={{
-              fontFamily: 'var(--font-serif)',
-              fontStyle: 'italic',
-              fontWeight: 400,
-              fontSize: 22,
-              color: 'var(--gold)',
-              maxWidth: 480,
-            }}
-          >
-            High-fidelity storytelling for global brands.
-          </motion.p>
         </div>
 
         {/* RIGHT */}
         <div>
           <motion.p
-            custom={2}
+            custom={1}
             initial="hidden"
             animate={booted ? 'show' : 'hidden'}
             variants={fadeUp}
@@ -254,7 +238,7 @@ export default function Hero({ booted }: HeroProps) {
 
           {/* Tool tags */}
           <motion.div
-            custom={3}
+            custom={2}
             initial="hidden"
             animate={booted ? 'show' : 'hidden'}
             variants={fadeUp}
@@ -267,7 +251,7 @@ export default function Hero({ booted }: HeroProps) {
 
           {/* Stats */}
           <motion.div
-            custom={4}
+            custom={3}
             initial="hidden"
             animate={booted ? 'show' : 'hidden'}
             variants={fadeUp}
