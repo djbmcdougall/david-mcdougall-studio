@@ -1,0 +1,41 @@
+{
+  "repoRoot": "/Users/davidmcdougall/Desktop/david-mcdougall-studio",
+  "cwd": "/Users/davidmcdougall/Desktop/david-mcdougall-studio",
+  "stack": {
+    "frameworks": [
+      "React"
+    ],
+    "componentLibraries": [],
+    "styling": [
+      "Tailwind CSS",
+      "Framer Motion",
+      "CSS variables"
+    ],
+    "componentDirectories": [
+      "src/components"
+    ],
+    "packageFiles": [
+      "package.json"
+    ]
+  },
+  "routes": [],
+  "tokens": {
+    "sources": [
+      "src/styles/globals.css"
+    ],
+    "tokens": [
+      "--bg",
+      "--fg",
+      "--gold",
+      "--gold-dim",
+      "--fg-dim",
+      "--fg-faint",
+      "--red",
+      "--border",
+      "--font-display",
+      "--font-serif",
+      "--font-mono"
+    ]
+  },
+  "summary": "Repo root: /Users/davidmcdougall/Desktop/david-mcdougall-studio\nWorking directory: /Users/davidmcdougall/Desktop/david-mcdougall-studio\nFrameworks: React\nStyling: Tailwind CSS, Framer Motion, CSS variables\nComponent libraries: none detected\nRoute roots: none detected\nRoute candidates: none detected\nComponent directories: src/components\nToken sources: src/styles/globals.css\nVisible design language hints: utility-first styling, motion-ready surface, existing CSS tokens should be preserved"
+}

@@ -8,19 +8,8 @@ const TABS: { id: PortfolioTab; label: string }[] = [
   { id: 'tech-writing',  label: 'Tech & Writing' },
 ]
 
-const BADGE_COLORS: Record<string, string> = {
-  'AI-NATIVE':  'var(--gold)',
-  'BROADCAST':  'var(--gold)',
-  'BRAND':      'rgba(100,200,180,0.6)',
-  'DIGITAL':    'rgba(100,200,180,0.6)',
-  'TECH':       'rgba(80,120,255,0.6)',
-  'WRITING':    'rgba(80,120,255,0.6)',
-  'COPY':       'rgba(80,120,255,0.6)',
-}
-
 export default function PortfolioGrid() {
   const [activeTab, setActiveTab] = useState<PortfolioTab>('moving-image')
-
   const items = portfolio.filter((p) => p.tab === activeTab)
 
   return (
@@ -30,7 +19,7 @@ export default function PortfolioGrid() {
         display: 'flex',
         alignItems: 'baseline',
         justifyContent: 'space-between',
-        marginBottom: 36,
+        marginBottom: 40,
         flexWrap: 'wrap',
         gap: 16,
       }}>
@@ -61,7 +50,7 @@ export default function PortfolioGrid() {
                 borderColor: activeTab === tab.id ? 'var(--gold)' : 'var(--border)',
                 color: activeTab === tab.id ? 'var(--gold)' : 'var(--fg-dim)',
                 background: activeTab === tab.id ? 'rgba(200,169,110,0.08)' : 'transparent',
-                transition: 'all 0.2s',
+                transition: 'all 0.25s cubic-bezier(0.32,0.72,0,1)',
               }}
             >
               {tab.label}
@@ -70,143 +59,156 @@ export default function PortfolioGrid() {
         </div>
       </div>
 
-      {/* Grid */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeTab}
-          initial="hidden"
-          animate="show"
-          exit="hidden"
-          variants={{
-            hidden: { opacity: 0 },
-            show: { opacity: 1, transition: { staggerChildren: 0.06 } },
-          }}
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: 16,
-          }}
-        >
-          {items.map((item) => (
-            <PortfolioCard key={item.id} item={item} />
-          ))}
-        </motion.div>
-      </AnimatePresence>
+      {/* Editorial list */}
+      <div style={{ borderTop: '0.5px solid var(--border)' }}>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] }}
+          >
+            {items.map((item, i) => (
+              <WorkRow key={item.id} item={item} index={i} />
+            ))}
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </section>
   )
 }
 
-function PortfolioCard({ item }: { item: (typeof portfolio)[0] }) {
-  const badgeColor = BADGE_COLORS[item.badge] ?? 'var(--fg-dim)'
+function WorkRow({ item, index }: { item: (typeof portfolio)[0]; index: number }) {
+  const [hovered, setHovered] = useState(false)
 
   return (
     <motion.div
-      className="w-tile"
-      variants={{
-        hidden: { opacity: 0, y: 16 },
-        show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 25 } },
-      }}
-      initial="idle"
-      whileHover="hovered"
+      onHoverStart={() => setHovered(true)}
+      onHoverEnd={() => setHovered(false)}
       style={{
         position: 'relative',
-        aspectRatio: '16/10',
-        background: 'linear-gradient(135deg, #111110 0%, #0c0c0b 100%)',
+        display: 'flex',
+        alignItems: 'baseline',
+        justifyContent: 'space-between',
+        padding: '28px 0',
+        borderBottom: '0.5px solid var(--border)',
         overflow: 'hidden',
-        border: '1px solid var(--border)',
+        cursor: 'default',
       }}
     >
-      {/* Thumbnail */}
+      {/* Subtle row highlight */}
       <motion.div
-        variants={{
-          idle: { scale: 1 },
-          hovered: { scale: 1.05 },
-        }}
-        transition={{ duration: 7, ease: 'easeOut' }}
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: `url(${item.thumb})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      />
-
-      {/* Badge */}
-      <div style={{
-        position: 'absolute',
-        top: 14,
-        right: 14,
-        fontFamily: 'var(--font-mono)',
-        fontSize: 8,
-        letterSpacing: '0.18em',
-        color: badgeColor,
-        border: `1px solid ${badgeColor}`,
-        padding: '3px 8px',
-        background: 'rgba(7,7,6,0.7)',
-        zIndex: 2,
-      }}>
-        {item.badge}
-      </div>
-
-      {/* Client - top left */}
-      <div style={{
-        position: 'absolute',
-        top: 14,
-        left: 14,
-        fontFamily: 'var(--font-mono)',
-        fontSize: 9,
-        letterSpacing: '0.14em',
-        textTransform: 'uppercase',
-        color: 'var(--gold)',
-        zIndex: 2,
-      }}>
-        {item.client}
-      </div>
-
-      {/* Hover gradient */}
-      <motion.div
-        variants={{ idle: { opacity: 0 }, hovered: { opacity: 1 } }}
+        animate={{ opacity: hovered ? 1 : 0 }}
         transition={{ duration: 0.3 }}
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to top, rgba(7,7,6,0.95) 0%, transparent 60%)',
-          zIndex: 1,
+          background: 'rgba(200,169,110,0.03)',
+          pointerEvents: 'none',
         }}
       />
 
-      {/* Info — slides up */}
-      <motion.div
-        variants={{ idle: { y: 20, opacity: 0 }, hovered: { y: 0, opacity: 1 } }}
-        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-        style={{
-          position: 'absolute',
-          bottom: 18,
-          left: 18,
-          right: 18,
-          zIndex: 2,
+      {/* Index */}
+      <span style={{
+        fontFamily: 'var(--font-mono)',
+        fontSize: 9,
+        letterSpacing: '0.12em',
+        color: 'rgba(232,226,213,0.2)',
+        flexShrink: 0,
+        width: 32,
+      }}>
+        {String(index + 1).padStart(2, '0')}
+      </span>
+
+      {/* Title */}
+      <motion.h3
+        animate={{
+          x: hovered ? 16 : 0,
+          color: hovered ? 'var(--gold)' : 'var(--fg)',
         }}
-      >
-        <p style={{
+        transition={{ type: 'spring', stiffness: 300, damping: 26 }}
+        style={{
           fontFamily: 'var(--font-serif)',
           fontStyle: 'italic',
           fontWeight: 400,
-          fontSize: 16,
-          color: 'var(--fg)',
-          marginBottom: 4,
-        }}>
-          {item.title}
-        </p>
-        <p style={{
+          fontSize: 'clamp(22px, 2.8vw, 36px)',
+          lineHeight: 1,
+          flex: 1,
+          paddingLeft: 24,
+          paddingRight: 24,
+          zIndex: 1,
+        }}
+      >
+        {item.title}
+      </motion.h3>
+
+      {/* Client + type */}
+      <div style={{
+        display: 'flex',
+        gap: 32,
+        alignItems: 'baseline',
+        flexShrink: 0,
+        zIndex: 1,
+      }}>
+        <span style={{
           fontFamily: 'var(--font-mono)',
           fontSize: 9,
-          color: 'var(--fg-dim)',
-          letterSpacing: '0.1em',
+          letterSpacing: '0.14em',
+          textTransform: 'uppercase',
+          color: 'var(--gold)',
+        }}>
+          {item.client}
+        </span>
+        <span style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: 9,
+          letterSpacing: '0.12em',
+          textTransform: 'uppercase',
+          color: 'rgba(232,226,213,0.3)',
+          width: 160,
+          textAlign: 'right',
         }}>
           {item.type}
-        </p>
-      </motion.div>
+        </span>
+      </div>
+
+      {/* Hover thumbnail — floats in */}
+      <div style={{
+        position: 'absolute',
+        top: '50%',
+        left: '42%',
+        transform: 'translate(-50%, -50%)',
+        pointerEvents: 'none',
+        zIndex: 20,
+      }}>
+        <motion.div
+          initial={false}
+          animate={{
+            opacity: hovered ? 1 : 0,
+            scale: hovered ? 1 : 0.88,
+            rotate: hovered ? 2 : -3,
+          }}
+          transition={{ type: 'spring', stiffness: 320, damping: 28 }}
+          style={{
+            width: 260,
+            aspectRatio: '16/9',
+            background: 'linear-gradient(135deg, #111110 0%, #0c0c0b 100%)',
+            overflow: 'hidden',
+            border: '1px solid rgba(200,169,110,0.15)',
+            boxShadow: '0 24px 60px rgba(0,0,0,0.6)',
+          }}
+        >
+          <div style={{
+            width: '100%',
+            height: '100%',
+            backgroundImage: `url(${item.thumb})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            opacity: 0.7,
+          }} />
+        </motion.div>
+      </div>
     </motion.div>
   )
 }

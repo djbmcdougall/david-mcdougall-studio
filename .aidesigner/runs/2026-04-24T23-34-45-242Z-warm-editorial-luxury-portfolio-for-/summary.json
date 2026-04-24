@@ -1,0 +1,19 @@
+{
+  "id": "2026-04-24T23-34-45-242Z-warm-editorial-luxury-portfolio-for-",
+  "createdAt": "2026-04-24T23:34:45.245Z",
+  "prompt": "Warm editorial luxury portfolio for David McDougall filmmaker — Instrument Serif + Hanken Grotesk, paper/ink/cinnabar palette",
+  "mode": null,
+  "url": null,
+  "viewport": "desktop",
+  "repoRoot": "/Users/davidmcdougall/Desktop/david-mcdougall-studio",
+  "cwd": "/Users/davidmcdougall/Desktop/david-mcdougall-studio",
+  "requestPath": "/Users/davidmcdougall/Desktop/david-mcdougall-studio/.aidesigner/runs/2026-04-24T23-34-45-242Z-warm-editorial-luxury-portfolio-for-/request.json",
+  "repoContextPath": "/Users/davidmcdougall/Desktop/david-mcdougall-studio/.aidesigner/runs/2026-04-24T23-34-45-242Z-warm-editorial-luxury-portfolio-for-/repo-context.json",
+  "designHtmlPath": "/Users/davidmcdougall/Desktop/david-mcdougall-studio/.aidesigner/runs/2026-04-24T23-34-45-242Z-warm-editorial-luxury-portfolio-for-/design.html",
+  "previewPath": null,
+  "previewError": "Preview rendering requires puppeteer. Install it in the repo or alongside @aidesigner/agent-skills.",
+  "parentRunId": null,
+  "usage": null,
+  "transport": "mcp",
+  "remoteRunId": "e97501d0-ec94-4617-a56c-f4cc432f18c8"
+}

@@ -233,7 +233,9 @@ export default function Hero({ booted }: HeroProps) {
               marginBottom: 32,
             }}
           >
-            I build what studios can't afford to imagine. Twenty years directing for BBC and Al Jazeera gave me the instincts. Every AI tool ever made gives me the arsenal. The result: one director who does it all — concept, production, music, post — at a speed and cost that rewrites what's possible.
+            I spent two decades directing blue-chip documentaries and global commercials with crews of 50+. Now, I operate entirely as a one-man studio, utilising bleeding-edge AI synthesis to conceptualise, storyboard, edit, and grade at the speed of thought.
+            <br /><br />
+            What previously required a village and a month, I now architect in days. You get agency-level fidelity and creative depth without the bloated overhead — directly interfacing with the director from brief to final delivery.
           </motion.p>
 
           {/* Tool tags */}
