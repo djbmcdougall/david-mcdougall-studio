@@ -35,7 +35,7 @@ export default function App() {
       >
         <Nav />
         <ClientLogos />
-        <main>
+        <main style={{ paddingTop: 84 }}>
           <Hero booted={booted} />
           <Showreel />
           <Pillars />
