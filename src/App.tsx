@@ -8,6 +8,7 @@ import Showreel from './components/Showreel'
 import ClientLogos from './components/ClientLogos'
 import Hero from './components/Hero'
 import Pillars from './components/Pillars'
+import About from './components/About'
 import PortfolioGrid from './components/PortfolioGrid'
 import TravelSeries from './components/TravelSeries'
 import Writing from './components/Writing'
@@ -41,6 +42,7 @@ export default function App() {
           <ClientLogos />
           <Hero booted={booted} />
           <Pillars />
+          <About />
           <PortfolioGrid />
           <TravelSeries />
           <Writing />
