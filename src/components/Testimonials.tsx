@@ -58,18 +58,18 @@ export default function Testimonials() {
               }} />
               <div>
                 <p style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: 9,
-                  letterSpacing: '0.14em',
+                  fontFamily: 'var(--font-sans)',
+                  fontWeight: 500,
+                  fontSize: 12,
                   color: 'var(--fg)',
                   marginBottom: 2,
                 }}>
                   {t.name}
                 </p>
                 <p style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: 9,
-                  letterSpacing: '0.12em',
+                  fontFamily: 'var(--font-sans)',
+                  fontWeight: 400,
+                  fontSize: 12,
                   color: 'var(--fg-dim)',
                 }}>
                   {t.title} · {t.company}

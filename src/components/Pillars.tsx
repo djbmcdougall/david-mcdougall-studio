@@ -146,10 +146,11 @@ function Pillar({ num, title, body, index }: {
       </h3>
 
       <p style={{
-        fontFamily: 'var(--font-mono)',
-        fontSize: 10,
-        lineHeight: 1.8,
-        color: 'rgba(232,226,213,0.3)',
+        fontFamily: 'var(--font-sans)',
+        fontWeight: 400,
+        fontSize: 13,
+        lineHeight: 1.65,
+        color: 'rgba(232,226,213,0.45)',
         marginBottom: 28,
       }}>
         {body}

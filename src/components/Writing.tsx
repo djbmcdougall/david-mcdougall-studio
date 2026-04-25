@@ -80,9 +80,10 @@ export default function Writing() {
             </p>
 
             <p style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: 10,
-              lineHeight: 1.65,
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 400,
+              fontSize: 13,
+              lineHeight: 1.6,
               color: 'var(--fg-dim)',
               marginBottom: 18,
             }}>

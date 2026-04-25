@@ -226,9 +226,10 @@ export default function Hero({ booted }: HeroProps) {
             animate={booted ? 'show' : 'hidden'}
             variants={fadeUp}
             style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: 11,
-              lineHeight: 1.8,
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 400,
+              fontSize: 15,
+              lineHeight: 1.7,
               color: 'var(--fg-dim)',
               marginBottom: 32,
             }}
