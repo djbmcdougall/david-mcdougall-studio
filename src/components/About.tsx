@@ -37,7 +37,7 @@ export default function About() {
       </div>
 
       {/* Two-column layout */}
-      <div style={{
+      <div className="about-grid" style={{
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
         gap: 64,

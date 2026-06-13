@@ -115,6 +115,31 @@ a {
   .pillars-grid {
     grid-template-columns: 1fr !important;
   }
+
+  /* About: stack photo above text */
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Work grid: single column */
+  .work-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Testimonials: single column */
+  .testimonials-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  /* Work grid: 2 columns on large mobile */
+  .work-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {

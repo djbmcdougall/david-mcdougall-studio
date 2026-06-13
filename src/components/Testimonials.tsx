@@ -17,7 +17,7 @@ export default function Testimonials() {
         What Clients Say
       </h2>
 
-      <div style={{
+      <div className="testimonials-grid" style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(3, 1fr)',
         gap: 16,

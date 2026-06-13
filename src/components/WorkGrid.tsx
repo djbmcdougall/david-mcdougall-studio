@@ -43,7 +43,7 @@ export default function WorkGrid() {
       }}>
         Selected Work
       </p>
-      <div style={{
+      <div className="work-grid" style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(3, 1fr)',
         gap: 16,
