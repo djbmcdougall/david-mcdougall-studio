@@ -1,5 +1,6 @@
 export default function Footer() {
   const links = [
+    { label: 'IMDb',      href: 'https://www.imdb.com/name/nm2040426/' },
     { label: 'Vimeo',     href: 'https://vimeo.com/davidmcdougall' },
     { label: 'LinkedIn',  href: 'https://www.linkedin.com/in/david-mcdougall-7861287/' },
     { label: 'Instagram', href: 'https://www.instagram.com/wired_zone/' },
