@@ -1,6 +1,9 @@
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import { MotionConfig } from 'framer-motion'
 import Cursor from './components/Cursor'
 import GrainOverlay from './components/GrainOverlay'
+import CursorTrail from './components/CursorTrail'
 import BootSequence from './components/BootSequence'
 import Nav from './components/Nav'
 import Tagline from './components/Tagline'
@@ -8,13 +11,13 @@ import Showreel from './components/Showreel'
 import ClientLogos from './components/ClientLogos'
 import Hero from './components/Hero'
 import Pillars from './components/Pillars'
-import About from './components/About'
 import PortfolioGrid from './components/PortfolioGrid'
 import TravelSeries from './components/TravelSeries'
-import Writing from './components/Writing'
 import Testimonials from './components/Testimonials'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
+
+const CVPage = lazy(() => import('./pages/CVPage'))
 
 export default function App() {
   const [booted, setBooted] = useState(false)
@@ -24,33 +27,34 @@ export default function App() {
   }, [booted])
 
   return (
-    <>
+    // reducedMotion="user" makes all Framer Motion animations respect prefers-reduced-motion
+    <MotionConfig reducedMotion="user">
       <Cursor />
       <GrainOverlay />
+      <CursorTrail active={booted} />
       {!booted && <BootSequence onComplete={() => setBooted(true)} />}
-      <div
-        style={{
-          opacity: booted ? 1 : 0,
-          transition: 'opacity 0.6s ease',
-          pointerEvents: booted ? 'auto' : 'none',
-        }}
-      >
+      {/* No opacity gate — content renders immediately for crawlers and LCP.
+          BootSequence overlays as position:fixed so users still see the animation. */}
+      <div style={{ pointerEvents: booted ? 'auto' : 'none' }}>
         <Nav />
-        <main style={{ paddingTop: 84 }}>
-          <Tagline />
-          <Showreel />
-          <ClientLogos />
-          <Hero booted={booted} />
-          <Pillars />
-          <About />
-          <PortfolioGrid />
-          <TravelSeries />
-          <Writing />
-          <Testimonials />
-          <CTA />
-        </main>
+        <Routes>
+          <Route path="/" element={
+            <main style={{ paddingTop: 84 }}>
+              <Tagline />
+              <Showreel />
+              <ClientLogos />
+              <Hero booted={booted} />
+              <Pillars />
+              <PortfolioGrid />
+              <TravelSeries />
+              <Testimonials />
+              <CTA />
+            </main>
+          } />
+          <Route path="/cv" element={<Suspense fallback={null}><CVPage /></Suspense>} />
+        </Routes>
         <Footer />
       </div>
-    </>
+    </MotionConfig>
   )
 }

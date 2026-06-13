@@ -16,7 +16,7 @@ export default function Cursor() {
 
   const raw      = useRef({ x: -200, y: -200 })
   const ringPos  = useRef({ x: -200, y: -200 })
-  const bOffset  = useRef(22)   // current lerped bracket offset
+  const bOffset  = useRef(14)   // current lerped bracket offset
   const ringSize = useRef(36)   // current lerped ring size
   const hovered  = useRef(false)
   const rafRef   = useRef<number>(0)
@@ -60,7 +60,7 @@ export default function Cursor() {
       }
 
       // Brackets — lerp offset, raw position
-      const targetOffset = h ? 40 : 22
+      const targetOffset = h ? 28 : 14
       bOffset.current = lerp(bOffset.current, targetOffset, 0.2)
       const bo = bOffset.current
 

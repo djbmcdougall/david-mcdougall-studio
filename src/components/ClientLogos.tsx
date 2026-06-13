@@ -1,20 +1,32 @@
-import { motion } from 'framer-motion'
-
-// TODO: David — replace with real SVG/PNG logo files in /public/logos/
-const LOGOS = [
-  { name: 'BBC',             src: '/logos/bbc.svg' },
-  { name: 'Channel 4',       src: '/logos/channel4.svg' },
-  { name: 'PBS',             src: '/logos/pbs.svg' },
-  { name: 'Jumeirah',        src: '/logos/jumeirah.svg' },
-  { name: 'Emirates',        src: '/logos/emirates.svg' },
-  { name: 'Qatar Airways',   src: '/logos/qatar.svg' },
-  { name: 'Al Jazeera',      src: '/logos/aljazeera.svg' },
-  { name: 'Brand Client',    src: null },
-  { name: 'Brand Client',    src: null },
+// forceBlack: true for logos whose PNG files have very sparse/transparent content
+// that needs brightness(0) to render visibly on white background
+const BROADCASTERS = [
+  { name: 'BBC',                    src: '/logos/bbc.png',           forceBlack: true  },
+  { name: 'Al Jazeera',             src: '/logos/aljazeera.png',     forceBlack: false },
+  { name: 'Channel 4 News',         src: '/logos/channel4-news.png', forceBlack: false },
+  { name: 'Qatar Television',       src: '/logos/qatar-tv.png',      forceBlack: true  },
+  { name: 'PBS',                    src: '/logos/pbs.png',           forceBlack: true  },
+  { name: 'Channel 5',              src: '/logos/channel5.png',      forceBlack: false },
+  { name: 'GBH',                    src: '/logos/gbh.png',           forceBlack: false },
+  { name: 'Qatar Media Corporation',src: '/logos/qatar-media.png',   forceBlack: false },
 ]
 
-// Duplicate for seamless loop
-const ALL = [...LOGOS, ...LOGOS]
+const BRANDS = [
+  { name: 'Emirates',               src: '/logos/emirates.png',          forceBlack: false },
+  { name: 'Qatar Airways',          src: '/logos/qatar-airways.png',     forceBlack: false },
+  { name: 'Jumeirah',               src: '/logos/jumeirah.png',          forceBlack: false },
+  { name: 'Savills',                src: '/logos/savills.png',           forceBlack: false },
+  { name: 'Giorgio Armani',         src: '/logos/armani.png',            forceBlack: false },
+  { name: 'Jotun',                  src: '/logos/jotun.png',             forceBlack: false },
+  { name: 'Monocle',                src: '/logos/monocle.png',           forceBlack: true  },
+  { name: 'Qatar Foundation',       src: '/logos/qatar-foundation.png',  forceBlack: false },
+  { name: 'Qatar Rail',             src: '/logos/qatar-rail.png',        forceBlack: false },
+  { name: 'Al-Ahli Hospital',       src: '/logos/al-ahli.png',          forceBlack: false },
+  { name: 'Durham University',      src: '/logos/durham.png',            forceBlack: false },
+]
+
+const DIVIDER = { name: '', src: '', forceBlack: false }
+const ALL = [...BROADCASTERS, DIVIDER, ...BRANDS, ...BROADCASTERS, DIVIDER, ...BRANDS]
 
 export default function ClientLogos() {
   return (
@@ -22,16 +34,28 @@ export default function ClientLogos() {
       overflow: 'hidden',
       borderTop: '0.5px solid var(--border)',
       borderBottom: '0.5px solid var(--border)',
-      background: 'var(--bg)',
-      padding: '14px 0',
+      background: 'rgba(14,12,8,1)',
       position: 'relative',
-      zIndex: 50,
+      padding: '20px 0',
     }}>
+      {/* Fade masks */}
+      <div style={{
+        position: 'absolute', left: 0, top: 0, bottom: 0, width: 100,
+        background: 'linear-gradient(to right, rgba(14,12,8,1), transparent)',
+        zIndex: 2, pointerEvents: 'none',
+      }} />
+      <div style={{
+        position: 'absolute', right: 0, top: 0, bottom: 0, width: 100,
+        background: 'linear-gradient(to left, rgba(14,12,8,1), transparent)',
+        zIndex: 2, pointerEvents: 'none',
+      }} />
+
       <div
         style={{
           display: 'flex',
+          alignItems: 'center',
           width: 'max-content',
-          animation: 'ticker-scroll 35s linear infinite',
+          animation: 'ticker-scroll 65s linear infinite',
           willChange: 'transform',
         }}
         onMouseEnter={(e) => {
@@ -41,52 +65,66 @@ export default function ClientLogos() {
           (e.currentTarget as HTMLDivElement).style.animationPlayState = 'running'
         }}
       >
-        {ALL.map((logo, i) => (
-          <motion.div
-            key={i}
-            whileHover={{ opacity: 0.75 }}
-            transition={{ duration: 0.2 }}
-            style={{
+        {ALL.map((logo, i) =>
+          logo.src === '' ? (
+            <div key={i} style={{
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center',
-              padding: '0 40px',
-              opacity: 0.3,
+              padding: '0 20px',
               flexShrink: 0,
-            }}
-          >
-            {logo.src ? (
+            }}>
+              <div style={{
+                width: 4,
+                height: 4,
+                borderRadius: '50%',
+                background: 'var(--gold)',
+                opacity: 0.5,
+              }} />
+            </div>
+          ) : (
+            <div
+              key={i}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0,
+                margin: '0 12px',
+                padding: '14px 28px',
+                background: '#ffffff',
+                border: '0.5px solid rgba(255,255,255,0.15)',
+                borderRadius: 6,
+                transition: 'box-shadow 0.25s, border-color 0.25s',
+                cursor: 'default',
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLDivElement
+                el.style.boxShadow = '0 0 0 1.5px rgba(200,169,110,0.5)'
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLDivElement
+                el.style.boxShadow = 'none'
+              }}
+            >
               <img
                 src={logo.src}
                 alt={logo.name}
+                width={130}
+                height={36}
+                loading="lazy"
                 style={{
-                  height: 28,
+                  height: 36,
                   width: 'auto',
-                  filter: 'brightness(0) invert(1)',
+                  maxWidth: 130,
+                  objectFit: 'contain',
                   display: 'block',
-                }}
-                onError={(e) => {
-                  // Fallback to text if logo file missing
-                  const el = e.currentTarget
-                  const parent = el.parentElement
-                  if (parent) {
-                    parent.innerHTML = `<span style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.18em;color:var(--fg-dim);white-space:nowrap;">${logo.name.toUpperCase()}</span>`
-                  }
+                  mixBlendMode: 'multiply',
+                  filter: logo.forceBlack ? 'brightness(0)' : 'none',
                 }}
               />
-            ) : (
-              <span style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: 10,
-                letterSpacing: '0.18em',
-                color: 'var(--fg-dim)',
-                whiteSpace: 'nowrap',
-              }}>
-                {logo.name.toUpperCase()}
-              </span>
-            )}
-          </motion.div>
-        ))}
+            </div>
+          )
+        )}
       </div>
     </div>
   )

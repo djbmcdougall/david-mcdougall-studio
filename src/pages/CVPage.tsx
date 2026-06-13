@@ -1,0 +1,520 @@
+import React from 'react'
+import { motion } from 'framer-motion'
+
+const B = ({ children }: { children: React.ReactNode }) => (
+  <strong style={{ color: 'var(--fg)', fontWeight: 500 }}>{children}</strong>
+)
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 16 },
+  show: (i: number) => ({
+    opacity: 1, y: 0,
+    transition: { delay: i * 0.07, duration: 0.55, ease: [0.32, 0.72, 0, 1] as const },
+  }),
+}
+
+const JOBS: { title: string; company: string; location: string; dates: string; bullets: React.ReactNode[] }[] = [
+  {
+    title: 'Founder & AI Creative Producer',
+    company: 'Murmur Labs Ltd',
+    location: 'Richmond, North Yorkshire',
+    dates: '2023 – Present',
+    bullets: [
+      'Founded an AI-native product studio developing voice-first and aural intelligence applications.',
+      'Built Voco — a Voice AI assistant integrating Vapi, ElevenLabs, and LLM backends for automated outbound and inbound calling.',
+      'Developed MintSkills — a verified commercial marketplace for agent-native developer tools with a proprietary 4-stage security pipeline.',
+      'Applied generative AI video tools (Runway ML, Kling, Luma) and AI audio pipelines to broadcast-quality film and media production.',
+    ],
+  },
+  {
+    title: 'Executive Producer',
+    company: 'The Wired Agency',
+    location: 'Doha, Qatar',
+    dates: 'Sep 2013 – Feb 2023',
+    bullets: [
+      <>Series-directed <em>The Journey</em> — a 15-part bilingual (Arabic/English) travel series for <B>Al Jazeera</B>, reaching 50M+ viewers across MENA.</>,
+      <>Delivered premium branded content for <B>Total</B>, <B>Harrods</B>, <B>Land Rover</B>, <B>Qatar Airways</B>, Hamad International Airport, <B>Qatar Foundation</B>, and Qatar Media Corporation.</>,
+    ],
+  },
+  {
+    title: 'Senior Producer · Director',
+    company: 'Qatar Media Corporation (State Broadcaster)',
+    location: 'Doha, Qatar',
+    dates: 'Sep 2018 – Feb 2020',
+    bullets: [
+      'Developed and produced TV programmes, online content, and promos for a new English-language channel.',
+      <>Director — <em>Secrets of Qatar</em> (Parts 1 &amp; 2), broadcast documentary for <B>Qatar Media Corporation</B>.</>,
+    ],
+  },
+  {
+    title: 'Content Director',
+    company: 'Freelance',
+    location: 'Europe, Middle East, South East Asia',
+    dates: 'Jun 2009 – Sep 2013',
+    bullets: [
+      <>Directed branded content and documentary assignments across Myanmar, Thailand, Hong Kong, Philippines, Bahrain, and UK — clients included <B>Daily Telegraph</B>, Monocle Magazine, and University of Durham.</>,
+    ],
+  },
+  {
+    title: 'Producer / Director',
+    company: 'Alchemy Films',
+    location: 'Dubai, UAE',
+    dates: 'Jul 2007 – Jul 2009',
+    bullets: [
+      <>Directed branded content, documentaries, TVCs and virals for <B>Armani</B>, <B>Ferragamo</B>, <B>Emirates Airlines</B>, <B>McKinsey</B>, <B>Bloomberg</B>, and <B>CNN</B> — via agencies TBWA, Leo Burnett, Ogilvy, and Grey.</>,
+    ],
+  },
+  {
+    title: 'Development Producer · Associate Producer · Production Manager',
+    company: 'BBC · Discovery · National Geographic · Channel 4 · PBS',
+    location: 'London',
+    dates: 'Apr 2004 – Jun 2007',
+    bullets: [
+      <>Production Manager — <B>BBC4</B> Storyville (<em>The Curse of Oil</em>). Line Producer — <B>Discovery</B> (<em>Atlas: Italy Revealed</em>). Produced and developed for <B>BBC</B> Horizon, <B>Channel 4</B> News, <B>PBS</B>, and <B>National Geographic</B>.</>,
+    ],
+  },
+  {
+    title: 'Development Producer / Associate Producer',
+    company: 'Paladin Invision Productions (Multi Emmy-winning)',
+    location: 'London',
+    dates: 'Mar 2003 – Apr 2004',
+    bullets: [],
+  },
+  {
+    title: 'Associate Producer / Head of Development',
+    company: 'Atlantic Celtic Films',
+    location: 'Windsor, UK',
+    dates: 'Sep 2001 – Apr 2003',
+    bullets: [
+      'Produced investigations and current affairs documentary content.',
+    ],
+  },
+]
+
+const COMPETENCIES = [
+  {
+    title: 'AI & Emerging Tech',
+    body: 'Generative AI · AI video pipelines · Voice AI (Vapi / ElevenLabs) · Prompt engineering · Agent-native development · AI product strategy · LLM workflows',
+  },
+  {
+    title: 'Production & Direction',
+    body: 'Documentary filmmaking · Branded content · Broadcast series direction · Executive producing · Multi-platform content · Post-production',
+  },
+  {
+    title: 'Creative & Strategy',
+    body: 'Narrative development · Creative direction · Content strategy · Brand storytelling · New business development · AI creative consulting',
+  },
+]
+
+const SKILLS = [
+  { label: 'AI Video',    val: 'Runway ML · Kling · Luma Dream Machine · Sora · Midjourney · Pika' },
+  { label: 'Voice AI',   val: 'ElevenLabs · Vapi · Whisper · TTS pipelines · Agentic voice workflows' },
+  { label: 'LLMs',       val: 'Claude · GPT-4o · Gemini · Prompt engineering · Agent-native development' },
+  { label: 'Dev Stack',  val: 'React · TypeScript · Tailwind · Claude Code · Vercel · MCP · Node.js' },
+  { label: 'Production', val: 'Final Cut Pro · Premiere · DaVinci Resolve · After Effects · Avid' },
+]
+
+const RULE: React.CSSProperties = {
+  borderTop: '0.5px solid var(--border)',
+  margin: '36px 0 0',
+}
+
+const RULE_GOLD: React.CSSProperties = {
+  borderTop: '1px solid rgba(200,169,110,0.3)',
+  margin: '8px 0 0',
+}
+
+const LABEL: React.CSSProperties = {
+  fontFamily: 'var(--font-mono)',
+  fontSize: 9,
+  letterSpacing: '0.22em',
+  textTransform: 'uppercase' as const,
+  color: 'var(--gold)',
+  margin: '28px 0 12px',
+}
+
+export default function CVPage() {
+  return (
+    <main style={{ paddingTop: 84, minHeight: '100vh' }}>
+      <div style={{ maxWidth: 860, margin: '0 auto', padding: '60px 40px 100px' }}>
+
+        {/* ── Back link ───────────────────────────────────────────────── */}
+        <a
+          href="/"
+          style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: 9,
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: 'var(--fg-dim)',
+            textDecoration: 'none',
+            display: 'inline-block',
+            marginBottom: 48,
+            transition: 'color 0.2s',
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--gold)')}
+          onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--fg-dim)')}
+        >
+          ← davidmcdougall.studio
+        </a>
+
+        {/* ── Header ──────────────────────────────────────────────────── */}
+        <motion.div
+          initial="hidden" animate="show"
+          variants={{ show: { transition: { staggerChildren: 0.08 } } }}
+        >
+          <motion.h1
+            variants={fadeUp} custom={0}
+            style={{
+              fontFamily: 'var(--font-serif)',
+              fontStyle: 'italic',
+              fontWeight: 400,
+              fontSize: 'clamp(36px, 6vw, 56px)',
+              lineHeight: 1,
+              color: 'var(--fg)',
+              marginBottom: 10,
+            }}
+          >
+            David McDougall
+          </motion.h1>
+
+          <motion.p
+            variants={fadeUp} custom={1}
+            style={{
+              fontFamily: 'var(--font-serif)',
+              fontStyle: 'italic',
+              fontSize: 17,
+              color: 'var(--gold)',
+              marginBottom: 14,
+            }}
+          >
+            AI Filmmaker · Creative Director · Aural Intelligence Producer
+          </motion.p>
+
+          <motion.div
+            variants={fadeUp} custom={2}
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: 10,
+              letterSpacing: '0.14em',
+              color: 'var(--fg-dim)',
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '6px 20px',
+              marginBottom: 4,
+            }}
+          >
+            <span>Richmond, North Yorkshire</span>
+            <a
+              href="mailto:davidmcdougall@proton.me"
+              style={{ color: 'var(--gold)', textDecoration: 'none' }}
+            >
+              davidmcdougall@proton.me
+            </a>
+            <span>+44 7943 590 816</span>
+            <a
+              href="https://mcdougall.studio"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: 'var(--gold)', textDecoration: 'none' }}
+            >
+              mcdougall.studio
+            </a>
+          </motion.div>
+
+          {/* Gold rule under header */}
+          <motion.div variants={fadeUp} custom={3} style={RULE_GOLD} />
+
+          {/* ── Download CTA ─────────────────────────────────────────── */}
+          <motion.div
+            variants={fadeUp} custom={4}
+            style={{ display: 'flex', alignItems: 'center', gap: 16, marginTop: 24 }}
+          >
+            <a
+              href="/david_mcdougall_cv.docx"
+              download
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: 9,
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                color: 'var(--bg)',
+                background: 'var(--gold)',
+                padding: '10px 20px',
+                textDecoration: 'none',
+                transition: 'opacity 0.2s',
+                display: 'inline-block',
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.85')}
+              onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+            >
+              ↓ Download CV (.docx)
+            </a>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: 'var(--fg-dim)', letterSpacing: '0.12em' }}>
+              Microsoft Word format
+            </span>
+          </motion.div>
+        </motion.div>
+
+        {/* ── Profile ─────────────────────────────────────────────────── */}
+        <div style={RULE} />
+        <p style={LABEL}>Profile</p>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55, ease: [0.32, 0.72, 0, 1] }}
+          style={{
+            fontFamily: 'var(--font-sans)',
+            fontSize: 15,
+            lineHeight: 1.8,
+            color: 'var(--fg-dim)',
+            maxWidth: '72ch',
+          }}
+        >
+          Award-winning documentary filmmaker and creative director with 20+ years across BBC,
+          Al Jazeera, Channel 4, Discovery, National Geographic, and PBS — and a track record of
+          blue chip brand production for Armani, Ferragamo, Emirates Airlines, Jumeirah, Harrods,
+          and Qatar Foundation. Now building at the intersection of AI, voice, and cinematic
+          storytelling. Founder of Murmur Labs Ltd, an AI-native studio developing voice-first
+          products and aural intelligence platforms. Experienced in generative AI video production
+          pipelines, AI voiceover (ElevenLabs, Vapi), prompt engineering for creative applications,
+          and AI-assisted content strategy. Fluent in the full production stack from concept to
+          delivery — and in the emerging agent-native tooling reshaping it.
+        </motion.p>
+
+        {/* ── Core Competencies ───────────────────────────────────────── */}
+        <div style={RULE} />
+        <p style={LABEL}>Core Competencies</p>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+          {COMPETENCIES.map((c, i) => (
+            <motion.div
+              key={c.title}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08, duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+              style={{
+                padding: '16px 18px',
+                background: 'rgba(232,226,213,0.03)',
+                border: '1px solid var(--border)',
+                borderLeft: '2px solid var(--gold)',
+              }}
+            >
+              <p style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: 9,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'var(--fg)',
+                marginBottom: 8,
+              }}>
+                {c.title}
+              </p>
+              <p style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: 13,
+                lineHeight: 1.65,
+                color: 'var(--fg-dim)',
+              }}>
+                {c.body}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* ── Experience ──────────────────────────────────────────────── */}
+        <div style={RULE} />
+        <p style={LABEL}>Experience</p>
+        <div>
+          {JOBS.map((job, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.04, duration: 0.45, ease: [0.32, 0.72, 0, 1] }}
+              style={{
+                marginTop: i === 0 ? 0 : 28,
+                paddingTop: i === 0 ? 0 : 28,
+                borderTop: i === 0 ? 'none' : '0.5px solid var(--border)',
+              }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 16, flexWrap: 'wrap' }}>
+                <span style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontWeight: 400,
+                  fontSize: 17,
+                  color: 'var(--fg)',
+                }}>
+                  {job.title}
+                </span>
+                <span style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: 10,
+                  color: 'rgba(232,226,213,0.4)',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0,
+                }}>
+                  {job.dates}
+                </span>
+              </div>
+              <p style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: 10,
+                letterSpacing: '0.1em',
+                color: 'var(--gold)',
+                margin: '4px 0 10px',
+              }}>
+                {job.company}
+                {job.location && (
+                  <span style={{ color: 'rgba(232,226,213,0.35)', marginLeft: 10 }}>
+                    · {job.location}
+                  </span>
+                )}
+              </p>
+              {job.bullets.length > 0 && (
+                <ul style={{ listStyle: 'none', padding: 0 }}>
+                  {job.bullets.map((b, j) => (
+                    <li
+                      key={j}
+                      style={{
+                        fontFamily: 'var(--font-sans)',
+                        fontSize: 14,
+                        lineHeight: 1.7,
+                        color: 'var(--fg-dim)',
+                        paddingLeft: 18,
+                        position: 'relative',
+                        marginBottom: 4,
+                      }}
+                    >
+                      <span style={{
+                        position: 'absolute',
+                        left: 0,
+                        color: 'var(--gold)',
+                        fontSize: 10,
+                        top: 4,
+                      }}>
+                        ▸
+                      </span>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </motion.div>
+          ))}
+        </div>
+
+        {/* ── AI Tools & Technology ───────────────────────────────────── */}
+        <div style={RULE} />
+        <p style={LABEL}>AI Tools & Technology</p>
+        <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '8px 24px', alignItems: 'baseline' }}>
+          {SKILLS.map((s) => (
+            <>
+              <span
+                key={`label-${s.label}`}
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: 10,
+                  letterSpacing: '0.1em',
+                  color: 'var(--fg)',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {s.label}
+              </span>
+              <span
+                key={`val-${s.label}`}
+                style={{
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: 14,
+                  color: 'var(--fg-dim)',
+                  lineHeight: 1.6,
+                }}
+              >
+                {s.val}
+              </span>
+            </>
+          ))}
+        </div>
+
+        {/* ── Education ───────────────────────────────────────────────── */}
+        <div style={RULE} />
+        <p style={LABEL}>Education</p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <div>
+            <p style={{ fontFamily: 'var(--font-serif)', fontSize: 16, color: 'var(--fg)', marginBottom: 2 }}>
+              BSc (Econ) Agricultural Economics
+            </p>
+            <p style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--gold)', letterSpacing: '0.1em' }}>
+              University of Reading
+            </p>
+          </div>
+          <div>
+            <p style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--gold)', letterSpacing: '0.1em' }}>
+              Ampleforth College
+            </p>
+            <p style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--fg-dim)', marginTop: 3 }}>
+              4 A Levels · 10 GCSEs
+            </p>
+          </div>
+        </div>
+
+        {/* ── Footer ──────────────────────────────────────────────────── */}
+        <div style={{ ...RULE, marginTop: 48 }} />
+        <div style={{
+          marginTop: 24,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: 16,
+        }}>
+          <p style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: 9,
+            letterSpacing: '0.14em',
+            color: 'rgba(232,226,213,0.3)',
+          }}>
+            Portfolio · Showreel · AI Showcase:{' '}
+            <a
+              href="https://mcdougall.studio"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: 'var(--gold)', textDecoration: 'none' }}
+            >
+              mcdougall.studio
+            </a>
+          </p>
+          <a
+            href="/david_mcdougall_cv.docx"
+            download
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: 9,
+              letterSpacing: '0.16em',
+              textTransform: 'uppercase',
+              color: 'rgba(232,226,213,0.4)',
+              textDecoration: 'none',
+              border: '1px solid rgba(232,226,213,0.12)',
+              padding: '8px 14px',
+              transition: 'color 0.2s, border-color 0.2s',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = 'var(--gold)'
+              e.currentTarget.style.borderColor = 'rgba(200,169,110,0.4)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = 'rgba(232,226,213,0.4)'
+              e.currentTarget.style.borderColor = 'rgba(232,226,213,0.12)'
+            }}
+          >
+            ↓ Download CV
+          </a>
+        </div>
+
+      </div>
+    </main>
+  )
+}

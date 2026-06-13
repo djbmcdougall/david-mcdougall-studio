@@ -9,17 +9,18 @@ const BORDER_COLORS: Record<WritingBorder, string> = {
 
 export default function Writing() {
   return (
-    <section style={{ padding: '80px 40px 100px', maxWidth: 1200, margin: '0 auto' }}>
-      <p style={{
+    <section id="writing" style={{ padding: '80px 40px 100px', maxWidth: 1200, margin: '0 auto' }}>
+      <h2 style={{
         fontFamily: 'var(--font-mono)',
         fontSize: 10,
         letterSpacing: '0.2em',
         textTransform: 'uppercase',
         color: 'var(--gold)',
         marginBottom: 36,
+        fontWeight: 400,
       }}>
         Writing &amp; Ideas
-      </p>
+      </h2>
 
       <div style={{
         display: 'grid',

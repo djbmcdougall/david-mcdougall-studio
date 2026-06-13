@@ -1,18 +1,15 @@
 import { useEffect, useRef, useCallback, useState } from 'react'
 import { motion, type Variants } from 'framer-motion'
-import CursorTrail from './CursorTrail'
 
 interface HeroProps {
   booted: boolean
 }
 
-const TOOLS = ['Higgsfield', 'Sora', 'Runway', 'ElevenLabs', 'Udio', 'Midjourney', 'After Effects', 'DaVinci']
-
 const STATS = [
-  { value: '20+', label: 'Years directing' },
-  { value: '2',   label: 'Major broadcasters' },
-  { value: '1',   label: 'Director. Full studio.' },
-  { value: '∞',   label: 'Stories left to tell' },
+  { value: '20+', label: 'Years filmmaking experience' },
+  { value: '10',  label: 'Major broadcasters' },
+  { value: '50+', label: 'Countries filmed' },
+  { value: '∞',   label: 'Possibilities with AI' },
 ]
 
 const NAME = 'DAVID McDOUGALL'
@@ -23,7 +20,6 @@ export default function Hero({ booted }: HeroProps) {
   const mouse       = useRef({ x: -9999, y: -9999 })
   const rafRef      = useRef<number>(0)
   const sectionRef  = useRef<HTMLElement>(null)
-  const [heroInView, setHeroInView] = useState(false)
 
   // ── Bounds cache ──────────────────────────────────────────────
   const updateBounds = useCallback(() => {
@@ -74,17 +70,6 @@ export default function Hero({ booted }: HeroProps) {
     return () => window.removeEventListener('mousemove', onMove)
   }, [])
 
-  // ── IntersectionObserver for cursor trail ─────────────────────
-  useEffect(() => {
-    const section = sectionRef.current
-    if (!section) return
-    const observer = new IntersectionObserver(
-      ([entry]) => setHeroInView(entry.isIntersecting),
-      { threshold: 0 },
-    )
-    observer.observe(section)
-    return () => observer.disconnect()
-  }, [])
 
   // ── Magnetic name physics ─────────────────────────────────────
   useEffect(() => {
@@ -155,25 +140,35 @@ export default function Hero({ booted }: HeroProps) {
 
   return (
     <>
-      <CursorTrail active={heroInView} />
-
       <section
         id="hero"
         ref={sectionRef}
+        className="hero-grid"
         style={{
           padding: '80px 40px 72px',
           maxWidth: 1200,
           margin: '0 auto',
           display: 'grid',
-          gridTemplateColumns: '1fr 420px',
+          gridTemplateColumns: 'minmax(0, 1fr) min(420px, 40%)',
           gap: 40,
-          alignItems: 'end',
+          alignItems: 'start',
         }}
       >
         {/* LEFT */}
         <div>
-          <motion.p
+          {/* On-location photo */}
+          <motion.div
             custom={0}
+            initial="hidden"
+            animate={booted ? 'show' : 'hidden'}
+            variants={fadeUp}
+            style={{ marginBottom: 28 }}
+          >
+            <FlipCard />
+          </motion.div>
+
+          <motion.p
+            custom={1}
             initial="hidden"
             animate={booted ? 'show' : 'hidden'}
             variants={fadeUp}
@@ -186,11 +181,12 @@ export default function Hero({ booted }: HeroProps) {
               marginBottom: 24,
             }}
           >
-            Filmmaker &amp; Creative Director
+            Filmmaker &amp; AI Creative Director
           </motion.p>
 
           {/* Magnetic name */}
           <h1
+            aria-label="David McDougall"
             style={{
               fontFamily: 'var(--font-display)',
               fontSize: 'clamp(56px, 8vw, 96px)',
@@ -216,45 +212,9 @@ export default function Hero({ booted }: HeroProps) {
             ))}
           </h1>
 
-        </div>
-
-        {/* RIGHT */}
-        <div>
-          <motion.p
-            custom={1}
-            initial="hidden"
-            animate={booted ? 'show' : 'hidden'}
-            variants={fadeUp}
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontWeight: 400,
-              fontSize: 15,
-              lineHeight: 1.7,
-              color: 'var(--fg-dim)',
-              marginBottom: 32,
-            }}
-          >
-            I spent two decades directing blue-chip documentaries and global commercials with crews of 50+. Now, I operate entirely as a one-man studio, utilising bleeding-edge AI synthesis to conceptualise, storyboard, edit, and grade at the speed of thought.
-            <br /><br />
-            What previously required a village and a month, I now architect in days. You get agency-level fidelity and creative depth without the bloated overhead — directly interfacing with the director from brief to final delivery.
-          </motion.p>
-
-          {/* Tool tags */}
+          {/* Stats — under name */}
           <motion.div
             custom={2}
-            initial="hidden"
-            animate={booted ? 'show' : 'hidden'}
-            variants={fadeUp}
-            style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 32 }}
-          >
-            {TOOLS.map((tool) => (
-              <ToolTag key={tool} label={tool} />
-            ))}
-          </motion.div>
-
-          {/* Stats */}
-          <motion.div
-            custom={3}
             initial="hidden"
             animate={booted ? 'show' : 'hidden'}
             variants={fadeUp}
@@ -271,10 +231,12 @@ export default function Hero({ booted }: HeroProps) {
                 }}
               >
                 <span style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 28,
+                  fontFamily: stat.value === '∞' ? 'var(--font-sans)' : 'var(--font-display)',
+                  fontSize: stat.value === '∞' ? 36 : 28,
+                  fontWeight: stat.value === '∞' ? 300 : undefined,
                   color: 'var(--gold)',
-                  letterSpacing: '0.04em',
+                  letterSpacing: stat.value === '∞' ? '0' : '0.04em',
+                  lineHeight: 1,
                 }}>
                   {stat.value}
                 </span>
@@ -290,38 +252,149 @@ export default function Hero({ booted }: HeroProps) {
               </div>
             ))}
           </motion.div>
+
+        </div>
+
+        {/* RIGHT — full bio */}
+        <div>
+          <motion.div
+            custom={2}
+            initial="hidden"
+            animate={booted ? 'show' : 'hidden'}
+            variants={fadeUp}
+            style={{ marginBottom: 32 }}
+          >
+            {[
+              <>I've sat across the table from heads of state and on the ground with refugees who had lost everything.</>,
+              <>Twenty years shooting, directing, and producing for BBC, Al Jazeera, Channel 4, PBS, Discovery, and National Geographic taught me what no film school can: how to find the real story under pressure, deliver on budget, and hit deadlines that matter.</>,
+              <>My <a href="https://en.wikipedia.org/wiki/Afghan_Massacre:_The_Convoy_of_Death" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)', textDecoration: 'none', borderBottom: '0.5px solid rgba(200,169,110,0.4)', paddingBottom: 1 }}>first broadcast film</a> exposed a major military incident in Afghanistan, won multiple awards, and aired on CBC, Channel 5 and ZDF. The Journey, my 15-part dual-language series for Al Jazeera, reached over 50 million viewers worldwide.</>,
+              <>After nine years building The Wired Agency — creating premium content for clients including Qatar Foundation, Harrods, Land Rover, and Qatar Airlines — I closed it in 2023 to go solo.</>,
+              <>Today I run a one-man cinematic studio at the forefront of AI-native production. Using Kling, Sora, Runway, ElevenLabs and a host of other generative AI platforms, I deliver broadcast-ready video.</>,
+              <>Real craft, frontier tools. Story is still story.</>,
+              <>I also founded <a href="https://www.murmurlabs.co/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)', textDecoration: 'none', borderBottom: '0.5px solid rgba(200,169,110,0.4)', paddingBottom: 1 }}>Murmur Labs</a>, building voice-first verification infrastructure. Our flagship product, <a href="https://murmur.guide/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)', textDecoration: 'none', borderBottom: '0.5px solid rgba(200,169,110,0.4)', paddingBottom: 1 }}>Murmur.Guide</a>, uses the human voice as its core trust layer.</>,
+              <>One director. Clear brief. Fast, exceptional delivery.</>,
+            ].map((para, i) => (
+              <p
+                key={i}
+                style={{
+                  fontFamily: 'var(--font-sans)',
+                  fontWeight: 400,
+                  fontSize: 14,
+                  lineHeight: 1.75,
+                  color: 'var(--fg-dim)',
+                  marginBottom: 14,
+                }}
+              >
+                {para}
+              </p>
+            ))}
+            <p style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: 10,
+              letterSpacing: '0.16em',
+              color: 'rgba(232,226,213,0.35)',
+              marginTop: 6,
+            }}>
+              Richmond, North Yorkshire, UK.
+            </p>
+          </motion.div>
+
         </div>
       </section>
     </>
   )
 }
 
-function ToolTag({ label }: { label: string }) {
+function FlipCard() {
+  const [flipped, setFlipped] = useState(false)
+
   return (
-    <motion.span
-      className="tool-tag"
-      whileHover={{ scale: 1.05 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+    <div
+      onMouseEnter={() => setFlipped(true)}
+      onMouseLeave={() => setFlipped(false)}
       style={{
-        fontFamily: 'var(--font-mono)',
-        fontSize: 9,
-        letterSpacing: '0.14em',
-        textTransform: 'uppercase',
-        padding: '5px 10px',
-        border: '1px solid var(--border)',
-        color: 'var(--fg-dim)',
-        transition: 'border-color 0.2s, color 0.2s',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = 'var(--gold)'
-        e.currentTarget.style.color = 'var(--fg)'
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = 'var(--border)'
-        e.currentTarget.style.color = 'var(--fg-dim)'
+        width: '100%',
+        aspectRatio: '1364/1428',
+        perspective: 1200,
+        cursor: 'pointer',
       }}
     >
-      {label}
-    </motion.span>
+      <div
+        style={{
+          width: '100%',
+          height: '100%',
+          position: 'relative',
+          transformStyle: 'preserve-3d',
+          transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+          transition: 'transform 0.7s cubic-bezier(0.32, 0.72, 0, 1)',
+        }}
+      >
+        {/* Front — photo */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
+          }}
+        >
+          <picture>
+            <source srcSet="/david-about.avif" type="image/avif" />
+            <source srcSet="/david-about.webp" type="image/webp" />
+            <img
+              src="/david-about.jpg"
+              alt="David McDougall directing on location"
+              width={1364}
+              height={1428}
+              loading="eager"
+              fetchPriority="high"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                display: 'block',
+                filter: 'contrast(1.08) saturate(0.82)',
+              }}
+            />
+          </picture>
+        </div>
+
+        {/* Back — Vimeo interview */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
+            transform: 'rotateY(180deg)',
+            background: '#000',
+          }}
+        >
+          {flipped && (
+            <iframe
+              src="https://player.vimeo.com/video/366344643?autoplay=1&color=c8a96e&title=0&byline=0&portrait=0"
+              style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
+          )}
+          {/* Label */}
+          <div style={{
+            position: 'absolute',
+            bottom: 14,
+            left: 16,
+            fontFamily: 'var(--font-mono)',
+            fontSize: 8,
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            color: 'rgba(200,169,110,0.6)',
+            pointerEvents: 'none',
+            zIndex: 2,
+          }}>
+            Interview
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }

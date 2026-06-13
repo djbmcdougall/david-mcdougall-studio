@@ -7,8 +7,8 @@
   --fg:        #e8e2d5;
   --gold:      #c8a96e;
   --gold-dim:  rgba(200,169,110,0.25);
-  --fg-dim:    rgba(232,226,213,0.4);
-  --fg-faint:  rgba(232,226,213,0.12);
+  --fg-dim:    rgba(232,226,213,0.6);
+  --fg-faint:  rgba(232,226,213,0.18);
   --red:       #e05555;
   --border:    rgba(232,226,213,0.08);
 
@@ -28,19 +28,32 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+/* Offset anchor scrolling to clear the fixed nav pill (64px) */
+section[id] {
+  scroll-margin-top: 80px;
 }
 
 body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-mono);
-  cursor: none;
   overflow-x: hidden;
 }
 
-/* Always hide default cursor */
-*, *::before, *::after {
-  cursor: none !important;
+/* Hide default cursor only for fine-pointer (mouse) devices */
+@media (pointer: fine) {
+  body { cursor: none; }
+  *, *::before, *::after { cursor: none !important; }
+}
+
+/* Focus rings — visible for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 a {
@@ -58,6 +71,11 @@ a {
   to   { transform: translateX(-50%); }
 }
 
+@keyframes ticker-scroll-reverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -68,5 +86,40 @@ a {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Nav responsive */
+.nav-hamburger { display: none; }
+
+@media (max-width: 768px) {
+  .nav-desktop-links { display: none !important; }
+  .nav-hamburger      { display: flex !important; }
+
+  /* Showreel: stack reels vertically */
+  .showreel-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .showreel-grid > * {
+    grid-column: 1 / -1 !important;
+  }
+
+  /* Hero: single column */
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Pillars: single column */
+  .pillars-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Pillars: two columns on tablet */
+  .pillars-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 }

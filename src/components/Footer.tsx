@@ -1,8 +1,9 @@
 export default function Footer() {
   const links = [
-    { label: 'Vimeo', href: 'https://vimeo.com/PLACEHOLDER' },
-    { label: 'LinkedIn', href: 'https://linkedin.com/in/PLACEHOLDER' },
-    { label: 'Instagram', href: 'https://instagram.com/PLACEHOLDER' },
+    { label: 'Vimeo',     href: 'https://vimeo.com/davidmcdougall' },
+    { label: 'LinkedIn',  href: 'https://www.linkedin.com/in/david-mcdougall-7861287/' },
+    { label: 'Instagram', href: 'https://www.instagram.com/wired_zone/' },
+    { label: 'X',         href: 'https://x.com/DavidMcDougall0' },
   ]
 
   return (
@@ -29,15 +30,15 @@ export default function Footer() {
             fontFamily: 'var(--font-display)',
             fontSize: 13,
             letterSpacing: '0.22em',
-            color: 'rgba(232,226,213,0.2)',
+            color: 'rgba(232,226,213,0.45)',
           }}>
-            DM STUDIO
+            mcdougall.studio
           </span>
           <p style={{
             fontFamily: 'var(--font-mono)',
             fontSize: 9,
             letterSpacing: '0.15em',
-            color: 'rgba(232,226,213,0.2)',
+            color: 'rgba(232,226,213,0.4)',
           }}>
             © {new Date().getFullYear()} David McDougall. All rights reserved.
           </p>
@@ -56,11 +57,11 @@ export default function Footer() {
                 fontSize: 9,
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
-                color: 'rgba(232,226,213,0.25)',
+                color: 'rgba(232,226,213,0.5)',
                 transition: 'color 0.3s cubic-bezier(0.32,0.72,0,1)',
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--gold)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(232,226,213,0.25)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(232,226,213,0.5)')}
             >
               {label}
             </a>

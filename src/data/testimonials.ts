@@ -4,29 +4,32 @@ export interface Testimonial {
   name: string
   title: string
   company: string
+  linkedIn?: string
 }
 
-// TODO: David — replace with real client quotes
 export const testimonials: Testimonial[] = [
   {
     id: 't-01',
-    quote: "David delivered a finished film in the time our previous agency spent writing the brief. The quality was extraordinary — you'd never know it was made by one person.",
-    name: 'Client Name',
-    title: 'Head of Brand',
-    company: 'Global Hospitality Group',
+    quote: "He didn't shirk at the often tough conditions and remained sharply focused on the project brief. Consultative, willing to push back helpfully, and worked beyond expectations. I was very pleased with the work that David did for us and am happy to recommend him.",
+    name: 'Quentin Hewitt',
+    title: 'Nonprofit Development & Communications',
+    company: 'Client',
+    linkedIn: 'https://www.linkedin.com/in/quentin-hewitt',
   },
   {
     id: 't-02',
-    quote: "Twenty years of BBC instincts combined with tools none of us had seen used this way. He found the story we didn't know we had.",
-    name: 'Client Name',
-    title: 'Creative Director',
-    company: 'Brand Agency',
+    quote: "Always kept control despite some disturbing circumstances. I highly appreciate his creativeness and solution driven attitude. If you consider somebody for a job like this with an excellent result you should contact him.",
+    name: 'Ger Engelsman',
+    title: 'Executive Search | Interim Management (C-level)',
+    company: 'Client',
+    linkedIn: 'https://www.linkedin.com/in/ger-engelsman',
   },
   {
     id: 't-03',
-    quote: "The first filmmaker we've worked with who understood both the editorial brief and the distribution strategy. He wrote the treatment and designed the campaign.",
-    name: 'Client Name',
-    title: 'Commissioning Editor',
-    company: 'Broadcaster',
+    quote: "An excellent story-teller, with a natural eye for setting and good fun to work with. David and his team put together a creative and compelling piece of work. I recommend him without hesitation.",
+    name: 'Ethan Chorin',
+    title: 'Founder & CEO, Red Sea Futures | Author, Benghazi: A New History',
+    company: 'Client',
+    linkedIn: 'https://www.linkedin.com/in/ethan-chorin',
   },
 ]

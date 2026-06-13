@@ -1,7 +1,16 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const LINKS = ['Work', 'Showreel', 'About', 'Writing', 'Contact']
+const LINKS = ['Reels', 'About', 'Work', 'CV', 'AI Case Study', 'Contact']
+
+// Page routes; all others are anchor links on the home page
+function hrefFor(label: string) {
+  if (label === 'Reels') return '#showreel'
+  if (label === 'About') return '#hero'
+  if (label === 'CV') return '/cv.html'
+  if (label === 'AI Case Study') return '/blessed-are-the-pacemakers.html'
+  return `#${label.toLowerCase()}`
+}
 
 const SPRING = { type: 'spring' as const, stiffness: 400, damping: 30 }
 
@@ -73,7 +82,7 @@ export default function Nav() {
           <div style={{ width: 1, height: 16, background: 'var(--border)', flexShrink: 0 }} />
 
           {/* Desktop links */}
-          <div style={{ display: 'flex', gap: 20 }}>
+          <div className="nav-desktop-links" style={{ display: 'flex', gap: 20 }}>
             {LINKS.map((label) => (
               <NavLink key={label} label={label} />
             ))}
@@ -81,9 +90,9 @@ export default function Nav() {
 
           {/* Mobile hamburger */}
           <button
+            className="nav-hamburger"
             onClick={() => setOpen(true)}
             style={{
-              display: 'none',
               background: 'none',
               border: 'none',
               padding: '4px 8px',
@@ -156,7 +165,7 @@ export default function Nav() {
             {LINKS.map((label, i) => (
               <motion.a
                 key={label}
-                href={`#${label.toLowerCase()}`}
+                href={hrefFor(label)}
                 onClick={() => setOpen(false)}
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -187,7 +196,7 @@ export default function Nav() {
 function NavLink({ label }: { label: string }) {
   return (
     <motion.a
-      href={`#${label.toLowerCase()}`}
+      href={hrefFor(label)}
       whileHover={{ opacity: 1 }}
       style={{
         fontFamily: 'var(--font-mono)',

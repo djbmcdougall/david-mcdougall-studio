@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blessed are the Pacemakers — Nike Spec Commercial · McDougall.studio</title>
+  <meta name="description" content="No crew. No budget. Every frame AI-generated. A Nike spec commercial by David McDougall, 2026." />
+  <meta property="og:title" content="Blessed are the Pacemakers — Nike Spec Commercial · McDougall.studio" />
+  <meta property="og:description" content="No crew. No budget. Every frame AI-generated." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --void: #09080a;
+      --ink: #111012;
+      --card: #161418;
+      --border: #28242c;
+      --gold: #c9a030;
+      --gdim: #7a6018;
+      --paper: #e8e0d0;
+      --muted: #706068;
+      --dim: #3a3040;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--void);
+      color: var(--paper);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.22s; }
+    .d3 { transition-delay: 0.36s; }
+    .d4 { transition-delay: 0.52s; }
+
+    /* ── Layout ── */
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    @media (max-width: 600px) { .wrap { padding: 0 20px; } }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* ── Typography ── */
+    .sec-label {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 32px;
+    }
+
+    .body-copy {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--paper);
+      line-height: 1.8;
+    }
+    .body-copy p + p { margin-top: 18px; }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 0.5px solid var(--border);
+      padding: 9px 18px;
+      background: none;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn:hover { color: var(--gold); border-color: var(--gold); }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--gold); }
+
+    /* ════════════════════════════════════
+       NAV BAR
+    ════════════════════════════════════ */
+    .site-nav {
+      border-bottom: 0.5px solid var(--border);
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    @media (max-width: 600px) { .site-nav { padding: 14px 20px; } }
+
+    /* ════════════════════════════════════
+       1. MASTHEAD
+    ════════════════════════════════════ */
+    .masthead {
+      border-bottom: 0.5px solid var(--border);
+      position: relative;
+    }
+    .masthead::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 28%;
+      height: 1px;
+      background: var(--gold);
+    }
+    .masthead-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 64px 40px 56px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: end;
+    }
+    @media (max-width: 768px) {
+      .masthead-inner {
+        grid-template-columns: 1fr;
+        padding: 40px 20px 48px;
+      }
+      .masthead::after { width: 40%; }
+    }
+
+    .masthead-eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 20px;
+    }
+    .masthead-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(44px, 7vw, 88px);
+      line-height: 0.85;
+      color: var(--paper);
+      letter-spacing: 0.02em;
+      margin-bottom: 18px;
+    }
+    .masthead-title .accent { color: var(--gold); }
+    .masthead-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--muted);
+    }
+    .masthead-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-end;
+      padding-bottom: 4px;
+    }
+    .masthead-meta span {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* ════════════════════════════════════
+       2. FILM EMBED
+    ════════════════════════════════════ */
+    .embed-section { background: var(--ink); }
+
+    .embed-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .embed-container iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .embed-placeholder {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--dim);
+      text-align: center;
+      line-height: 2;
+    }
+
+    .embed-caption-row {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 40px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 0.5px solid var(--border);
+    }
+    @media (max-width: 600px) {
+      .embed-caption-row { padding: 14px 20px; flex-direction: column; gap: 12px; align-items: flex-start; }
+    }
+    .embed-caption {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ════════════════════════════════════
+       3. LOGLINE CARD
+    ════════════════════════════════════ */
+    .logline-section {
+      padding: 80px 40px;
+      border-bottom: 0.5px solid var(--border);
+    }
+    @media (max-width: 600px) { .logline-section { padding: 60px 20px; } }
+
+    .logline-card {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 0.5px solid var(--border);
+      border-top: 2px solid var(--gold);
+      padding: 48px;
+    }
+    .logline-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(17px, 2.5vw, 22px);
+      font-weight: 400;
+      color: var(--paper);
+      line-height: 1.5;
+      text-align: center;
+    }
+    @media (max-width: 600px) { .logline-card { padding: 32px 24px; } }
+
+    /* ════════════════════════════════════
+       4. THE IDEA
+    ════════════════════════════════════ */
+    .idea-section {
+      padding: 80px 40px;
+      border-bottom: 0.5px solid var(--border);
+    }
+    @media (max-width: 600px) { .idea-section { padding: 60px 20px; } }
+
+    /* ════════════════════════════════════
+       5. PRODUCTION STACK
+    ════════════════════════════════════ */
+    .stack-section {
+      padding: 80px 40px;
+      background: var(--ink);
+      border-bottom: 0.5px solid var(--border);
+    }
+    @media (max-width: 600px) { .stack-section { padding: 60px 20px; } }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 600px) { .stack-grid { grid-template-columns: 1fr; } }
+
+    .stack-card {
+      background: var(--card);
+      border: 0.5px solid var(--border);
+      padding: 20px;
+      transition: border-color 0.2s;
+    }
+    .stack-card:hover { border-color: var(--gold); }
+
+    .stack-strip { height: 3px; width: 100%; margin-bottom: 14px; }
+
+    .stack-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      color: var(--paper);
+      letter-spacing: 0.04em;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .stack-version {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 10px;
+    }
+    .stack-role {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--paper);
+      line-height: 1.5;
+    }
+
+    /* ════════════════════════════════════
+       6. WHAT WENT WRONG
+    ════════════════════════════════════ */
+    .wrong-section {
+      padding: 80px 40px;
+      border-bottom: 0.5px solid var(--border);
+    }
+    @media (max-width: 600px) { .wrong-section { padding: 60px 20px; } }
+
+    .wrong-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px 60px;
+    }
+    @media (max-width: 768px) { .wrong-grid { grid-template-columns: 1fr; } }
+
+    .wrong-item { border-top: 0.5px solid var(--border); padding-top: 24px; }
+
+    .wrong-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    /* ════════════════════════════════════
+       7. OUTTAKES GALLERY
+    ════════════════════════════════════ */
+    .outtakes-section {
+      padding: 80px 0;
+      background: var(--ink);
+      border-bottom: 0.5px solid var(--border);
+      overflow: hidden;
+    }
+    .outtakes-label-wrap { padding: 0 40px; margin-bottom: 32px; }
+    @media (max-width: 600px) { .outtakes-label-wrap { padding: 0 20px; } }
+
+    .outtakes-scroll {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 0 40px 24px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .outtakes-scroll::-webkit-scrollbar { display: none; }
+
+    .outtake-slot { flex-shrink: 0; width: 280px; }
+
+    .outtake-frame {
+      aspect-ratio: 16 / 9;
+      background: var(--card);
+      border: 0.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.2s;
+      overflow: hidden;
+      position: relative;
+    }
+    .outtake-frame:hover { border-color: var(--gold); }
+    .outtake-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .outtake-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .outtake-caption {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-top: 10px;
+    }
+
+    .outtake-placeholder-icon {
+      width: 24px;
+      height: 24px;
+      opacity: 0.3;
+    }
+
+    .outtake-slot-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    /* ════════════════════════════════════
+       8. THE REVEAL
+    ════════════════════════════════════ */
+    .the-reveal-section { border-bottom: 0.5px solid var(--border); }
+
+    .reveal-label-wrap {
+      padding: 48px 40px 32px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (max-width: 600px) { .reveal-label-wrap { padding: 40px 20px 24px; } }
+
+    .reveal-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: var(--card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .reveal-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .reveal-placeholder-text {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+    .reveal-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 28px;
+      background: linear-gradient(to top, rgba(9,8,10,0.88) 0%, transparent 100%);
+    }
+    .reveal-caption {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 600px;
+    }
+
+    /* ════════════════════════════════════
+       9. THE ARGUMENT
+    ════════════════════════════════════ */
+    .argument-section {
+      padding: 80px 40px;
+      border-bottom: 0.5px solid var(--border);
+    }
+    @media (max-width: 600px) { .argument-section { padding: 60px 20px; } }
+
+    .pull-quote-block {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .pull-rule { flex: 1; height: 1px; background: var(--gold); opacity: 0.4; }
+    .pull-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 400;
+      color: var(--gold);
+      line-height: 1.4;
+      max-width: 420px;
+      flex-shrink: 0;
+      text-align: center;
+    }
+    @media (max-width: 600px) {
+      .pull-quote-block { flex-direction: column; }
+      .pull-rule { width: 48px; height: 1px; flex: none; }
+    }
+
+    /* ════════════════════════════════════
+       10. END CARD
+    ════════════════════════════════════ */
+    .endcard {
+      min-height: 100vh;
+      background: var(--void);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+      border-top: 0.5px solid var(--border);
+    }
+    .endcard-inner {
+      text-align: center;
+      width: 100%;
+      max-width: 460px;
+      padding: 40px;
+    }
+
+    .ec-line1 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      color: var(--paper);
+      display: block;
+      margin-bottom: 28px;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.8s cubic-bezier(0.22,1,0.36,1);
+    }
+    .ec-rule {
+      width: 0;
+      height: 1px;
+      background: var(--dim);
+      margin: 0 auto 28px;
+      transition: width 0.9s cubic-bezier(0.22,1,0.36,1);
+    }
+    .ec-line3 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.8s cubic-bezier(0.22,1,0.36,1);
+    }
+    .ec-swoosh {
+      display: block;
+      margin: 0 auto 32px;
+      opacity: 0;
+      transform: scale(0.88);
+      transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.9s cubic-bezier(0.22,1,0.36,1);
+    }
+    .ec-line5 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 46px;
+      color: var(--paper);
+      display: block;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(12px);
+      letter-spacing: 0.3em;
+      transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.8s cubic-bezier(0.22,1,0.36,1),
+                  letter-spacing 0.9s cubic-bezier(0.22,1,0.36,1);
+    }
+    .ec-line6 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.8s cubic-bezier(0.22,1,0.36,1);
+    }
+    .ec-replay {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--dim);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Nav ── -->
+<nav class="site-nav">
+  <a href="/" class="back-link">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 2L4 6L8 10" stroke="currentColor" stroke-width="0.8"/>
+    </svg>
+    McDougall.studio
+  </a>
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);">Case Study</span>
+</nav>
+
+<!-- ════════════════════════════════════
+     1. MASTHEAD
+════════════════════════════════════ -->
+<header class="masthead">
+  <div class="masthead-inner">
+    <div>
+      <span class="masthead-eyebrow reveal">McDougall.studio · AI Moving Image · 2026</span>
+      <h1 class="masthead-title reveal d1">BLESSED ARE THE <span class="accent">PACEMAKERS</span></h1>
+      <p class="masthead-subtitle reveal d2">A Nike Spec Commercial — AI-generated, 60 seconds, no crew</p>
+      <p class="masthead-credit reveal d3">David McDougall &nbsp;·&nbsp; <span style="letter-spacing:0.12em;">WRITER / DIRECTOR</span></p>
+    </div>
+    <div class="masthead-meta reveal d3">
+      <span>No crew · No budget</span>
+      <span>No shooting days</span>
+      <span>Every frame AI-generated</span>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════
+     2. FILM EMBED
+════════════════════════════════════ -->
+<section class="embed-section">
+  <div class="embed-container reveal">
+    <iframe src="https://player.vimeo.com/video/1200432945?color=c8a96e&title=0&byline=0&portrait=0" allowfullscreen></iframe>
+  </div>
+  <div class="embed-caption-row">
+    <span class="embed-caption">60 seconds · AI-generated · Nike spec · 2026</span>
+    <a href="https://vimeo.com/1200432945" target="_blank" rel="noopener noreferrer" class="btn">View on Vimeo →</a>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     4. THE IDEA
+════════════════════════════════════ -->
+<section class="idea-section">
+  <div class="wrap">
+    <div class="two-col">
+      <div class="reveal">
+        <span class="sec-label">The Idea</span>
+        <div class="body-copy">
+          <p>It started with a clip on Instagram. Pope Leo XIV — the first American pope, ex-marathon runner, noted fitness obsessive — had just been elected, and someone had posted footage of him arriving at the Vatican moving at a pace that was less papal procession, more late for a flight.</p>
+          <p>That was the hook. What if he was late to his own Mass? What if he had to sprint through Rome just to make the opening prayer? And what if, when the camera caught the hem of his cassock lifting on the threshold — he was wearing Nikes?</p>
+          <p>The concept took four minutes to write. The production took considerably longer.</p>
+        </div>
+      </div>
+      <div class="reveal d1">
+        <span class="sec-label">What We Were Making</span>
+        <div class="body-copy">
+          <p>A 60-second spec commercial. No client, no budget, no crew. Just the Pope, Rome, the Vatican, a pair of white Air Force 1s, and whatever AI tools I could throw at it.</p>
+          <p>The goal was simple: build something that looked like a high-budget Nike production — the kind of cinematic work they'd actually commission — using nothing but prompts and iteration.</p>
+          <p>Every single frame is AI-generated. No mixed production. No real footage. Pure generation.</p>
+        </div>
+        <span class="sec-label" style="margin-top:32px;display:block;">The Argument</span>
+        <div class="body-copy">
+          <p>This spot is a calling card. It makes one specific argument: that AI video production is now capable of generating commercially credible work — across architecture, crowds, fabric physics, cinematic locations and comedic narrative — without a production house, without a crew, without a single real frame of footage.</p>
+          <p>The gaps are real. Shoe continuity, hat consistency, watermarks, generation limits. But they're friction in a pipeline that moves faster every month. None of them are fundamental objections to the approach.</p>
+          <p>The joke lands because the imagery is believable. A pope sprinting through Rome in white Nikes. The hem rises. The swoosh.</p>
+          <p>Blessed are The Pacemakers. Especially on Sundays.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     5. PRODUCTION STACK
+════════════════════════════════════ -->
+<section class="stack-section">
+  <div class="wrap">
+    <span class="sec-label reveal">Production Stack</span>
+    <div class="stack-grid">
+
+      <div class="stack-card reveal">
+        <div class="stack-strip" style="background:var(--gold);"></div>
+        <span class="stack-name">Kling 3.0 Pro</span>
+        <span class="stack-version">Character Consistency Engine</span>
+        <p class="stack-role">All figure work. Character consistency at this quality level requires Kling. The corridor sprint, the billowing cassock, the chaotic fabric physics at full pace. Kling does the heavy lifting.</p>
+      </div>
+
+      <div class="stack-card reveal d1">
+        <div class="stack-strip" style="background:var(--gold);"></div>
+        <span class="stack-name">Higgsfield Cinema 2.5</span>
+        <span class="stack-version">Cinematic AI Video</span>
+        <p class="stack-role">All figure work alongside Kling. The workflow evolved — started with a single platform, hit a wall, pivoted to best-in-breed. Different models for different problems.</p>
+      </div>
+
+      <div class="stack-card reveal d2">
+        <div class="stack-strip" style="background:#4a8aba;"></div>
+        <span class="stack-name">Seedance 2.0</span>
+        <span class="stack-version">Physics Simulation</span>
+        <p class="stack-role">Fluid and particle simulation. The white smoke erupting from the Sistine chimney builds from a wisp to a full plume with physics that hold up under scrutiny. Nothing else comes close.</p>
+      </div>
+
+      <div class="stack-card reveal d3">
+        <div class="stack-strip" style="background:#4a8aba;"></div>
+        <span class="stack-name">Veo 3.1</span>
+        <span class="stack-version">Google DeepMind</span>
+        <p class="stack-role">Architectural scale. The drone pull-back over St Peter's Square, 150,000 people, the colonnade, Rome to the horizon. The only model that handles that scale without the crowd collapsing into a flat texture.</p>
+      </div>
+
+      <div class="stack-card reveal">
+        <div class="stack-strip" style="background:#4a8aba;"></div>
+        <span class="stack-name">Runway Gen-4.5</span>
+        <span class="stack-version">Runway ML</span>
+        <p class="stack-role">Handheld energy and reaction faces. The groom's expression at the wedding, the gendarmes' glance after the vault, the 85mm portrait energy. Runway's territory.</p>
+      </div>
+
+      <div class="stack-card reveal d1">
+        <div class="stack-strip" style="background:var(--dim);"></div>
+        <span class="stack-name">DaVinci Resolve</span>
+        <span class="stack-version">Blackmagic Design</span>
+        <p class="stack-role">The cleanup layer. Colour correction, post fixes, and the ongoing war against AI-generated black shoes.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     6. WHAT WENT WRONG
+════════════════════════════════════ -->
+<section class="wrong-section">
+  <div class="wrap">
+    <span class="sec-label reveal">What Went Wrong</span>
+    <div class="wrong-grid">
+
+      <div class="wrong-item reveal">
+        <span class="wrong-title">The Shoes</span>
+        <p class="body-copy">The models are biased. Clergy equals black leather shoes — it's in the training data and it fights every prompt. Seedance refused to cooperate entirely. Kling was better but needed persistent babysitting. The corridor sprint sequence was regenerated multiple times. The wedding couple and the gendarme vault shots still have dark shoes sitting in the Resolve queue.</p>
+      </div>
+
+      <div class="wrong-item reveal d1">
+        <span class="wrong-title">The Superman Pope</span>
+        <p class="body-copy">Early sprint generations treated the run like flight — vestments frozen, feet hovering. The model had seen too many superhero trailers and not enough people actually running. Genuinely diabolical. Gone immediately.</p>
+      </div>
+
+      <div class="wrong-item reveal d2">
+        <span class="wrong-title">The Zucchetto</span>
+        <p class="body-copy">Kling has a persistent misunderstanding of papal headwear. The correct item is a small, flat, hemispherical skullcap. What Kling consistently produced was a tall cylindrical thing somewhere between a Greek Orthodox hat and a chef's toque. The fix: a dedicated character reference image — correct costume from behind, head cropped out entirely, uploaded as an anchor for every subsequent generation.</p>
+      </div>
+
+      <div class="wrong-item reveal d3">
+        <span class="wrong-title">The Corridor Energy</span>
+        <p class="body-copy">A five-second generation limit makes a full sprint look like a brisk walk. The vestments drift rather than thrash. The fix: an ultra-low camera angle, 35cm from the marble floor, chequered floor dominating the foreground. It exaggerates the speed and makes the corridor feel infinite. That was the unlock.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     7. OUTTAKES GALLERY
+════════════════════════════════════ -->
+<section class="outtakes-section">
+  <div class="outtakes-label-wrap">
+    <span class="sec-label reveal">Outtakes — The Worst of It</span>
+  </div>
+  <div class="outtakes-scroll">
+
+    <div class="outtake-slot reveal">
+      <div class="outtake-frame">
+        <iframe src="https://player.vimeo.com/video/1200909747?color=c8a96e&title=0&byline=0&portrait=0" allowfullscreen></iframe>
+      </div>
+      <span class="outtake-caption">Superhuman Pope</span>
+    </div>
+
+    <div class="outtake-slot reveal d1">
+      <div class="outtake-frame">
+        <iframe src="https://player.vimeo.com/video/1200905100?color=c8a96e&title=0&byline=0&portrait=0" allowfullscreen></iframe>
+      </div>
+      <span class="outtake-caption">Hop Along Pope</span>
+    </div>
+
+    <div class="outtake-slot reveal d2">
+      <div class="outtake-frame">
+        <iframe src="https://player.vimeo.com/video/1200913910?color=c8a96e&title=0&byline=0&portrait=0" allowfullscreen></iframe>
+      </div>
+      <span class="outtake-caption">Balanced Pope</span>
+    </div>
+
+  </div>
+</section>
+
+
+<script>
+  // ── General scroll reveal ─────────────────────────
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    if (!el.closest('#endcard')) revealObs.observe(el);
+  });
+
+  // ── End card sequence ─────────────────────────────
+  const endcard   = document.getElementById('endcard');
+  const ec1       = document.getElementById('ec1');
+  const ecRule    = document.getElementById('ecRule');
+  const ec3       = document.getElementById('ec3');
+  const ecSwoosh  = document.getElementById('ecSwoosh');
+  const ec5       = document.getElementById('ec5');
+  const ec6       = document.getElementById('ec6');
+  const ecReplay  = document.getElementById('ecReplay');
+  const swooshAudio = document.getElementById('swooshAudio');
+  let played = false;
+
+  function show(el, delay) {
+    setTimeout(() => {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }, delay);
+  }
+
+  function runEndSequence() {
+    played = false;
+    ecReplay.style.opacity = '0';
+
+    // Reset all
+    [ec1, ec3, ec5, ec6].forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(12px)';
+    });
+    ecSwoosh.style.opacity = '0';
+    ecSwoosh.style.transform = 'scale(0.88)';
+    ecRule.style.width = '0';
+    ec5.style.letterSpacing = '0.3em';
+    swooshAudio.pause();
+    swooshAudio.currentTime = 0;
+
+    show(ec1, 300);
+    setTimeout(() => { ecRule.style.width = '100%'; }, 900);
+    show(ec3, 1500);
+    setTimeout(() => {
+      ecSwoosh.style.opacity = '1';
+      ecSwoosh.style.transform = 'scale(1)';
+      swooshAudio.play().catch(() => {});
+    }, 2400);
+    setTimeout(() => {
+      ec5.style.opacity = '1';
+      ec5.style.transform = 'translateY(0)';
+      ec5.style.letterSpacing = '0.06em';
+    }, 3200);
+    show(ec6, 4100);
+    setTimeout(() => {
+      ecReplay.style.opacity = '1';
+      played = true;
+    }, 5000);
+  }
+
+  const endObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !played) runEndSequence();
+    });
+  }, { threshold: 0.35 });
+
+  endObs.observe(endcard);
+
+  endcard.addEventListener('click', () => {
+    if (played) runEndSequence();
+  });
+</script>
+
+</body>
+</html>
