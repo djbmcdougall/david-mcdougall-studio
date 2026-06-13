@@ -14,7 +14,7 @@ export const episodes: Episode[] = [
   { ep: 4,  title: 'Episode 4',  location: 'Al Jazeera', youtubeId: 'IVWMwaGavqE', thumb: '/travel/ep04.jpg' },
   { ep: 5,  title: 'Episode 5',  location: 'Al Jazeera', youtubeId: 'bcU-mg1Ur0Y', thumb: '/travel/ep05.jpg' },
   { ep: 6,  title: 'Episode 6',  location: 'Al Jazeera', youtubeId: 'eAt1TRjCIR0', thumb: '/travel/ep06.jpg' },
-  { ep: 7,  title: 'Episode 7',  location: 'Al Jazeera', youtubeId: 'TWRNtbZLH9g', thumb: '/travel/ep07.jpg' },
+  { ep: 7,  title: 'Episode 7',  location: 'Al Jazeera', youtubeId: 'c9GxCCU2E8E', thumb: '/travel/ep07.jpg' },
   { ep: 8,  title: 'Episode 8',  location: 'Al Jazeera', youtubeId: 'vsLx8PCYD9Q', thumb: '/travel/ep08.jpg' },
   { ep: 9,  title: 'Episode 9',  location: 'Al Jazeera', youtubeId: 'JOoNAFuKFlM', thumb: '/travel/ep09.jpg' },
   { ep: 10, title: 'Episode 10', location: 'Al Jazeera', youtubeId: '8I9SUR2UU2Q', thumb: '/travel/ep10.jpg' },
