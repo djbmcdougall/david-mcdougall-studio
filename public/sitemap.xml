@@ -3,29 +3,29 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
-    <loc>https://davidmcdougall.studio/</loc>
+    <loc>https://mcdougall.studio/</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://davidmcdougall.studio/og-image.jpg</image:loc>
+      <image:loc>https://mcdougall.studio/og-image.jpg</image:loc>
       <image:title>David McDougall — Filmmaker &amp; AI Creative Director</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://davidmcdougall.studio/david-about.jpg</image:loc>
+      <image:loc>https://mcdougall.studio/david-about.jpg</image:loc>
       <image:title>David McDougall directing on location</image:title>
     </image:image>
   </url>
 
   <url>
-    <loc>https://davidmcdougall.studio/cv</loc>
+    <loc>https://mcdougall.studio/cv</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
 
 <url>
-    <loc>https://davidmcdougall.studio/blessed-are-the-pacemakers.html</loc>
+    <loc>https://mcdougall.studio/blessed-are-the-pacemakers.html</loc>
     <lastmod>2026-06-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>

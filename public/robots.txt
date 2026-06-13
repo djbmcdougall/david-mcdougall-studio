@@ -41,4 +41,4 @@ Allow: /
 User-agent: Applebot
 Allow: /
 
-Sitemap: https://davidmcdougall.studio/sitemap.xml
+Sitemap: https://mcdougall.studio/sitemap.xml
