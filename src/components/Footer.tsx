@@ -3,7 +3,7 @@ export default function Footer() {
     { label: 'IMDb',      href: 'https://www.imdb.com/name/nm2040426/' },
     { label: 'Vimeo',     href: 'https://vimeo.com/davidmcdougall' },
     { label: 'LinkedIn',  href: 'https://www.linkedin.com/in/david-mcdougall-7861287/' },
-    { label: 'Instagram', href: 'https://www.instagram.com/wired_zone/' },
+    { label: 'Instagram', href: 'https://www.instagram.com/mcdougall.studio/' },
     { label: 'X',         href: 'https://x.com/DavidMcDougall0' },
   ]
 
