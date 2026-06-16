@@ -52,7 +52,7 @@ export default function Footer() {
               key={label}
               href={href}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="me noopener noreferrer"
               style={{
                 fontFamily: 'var(--font-mono)',
                 fontSize: 9,

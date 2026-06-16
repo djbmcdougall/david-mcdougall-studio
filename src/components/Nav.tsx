@@ -194,6 +194,30 @@ export default function Nav() {
 }
 
 function NavLink({ label }: { label: string }) {
+  const isCta = label === 'Contact'
+
+  if (isCta) {
+    return (
+      <motion.a
+        href={hrefFor(label)}
+        whileHover={{ borderColor: 'rgba(200,169,110,0.7)', color: 'var(--gold)' }}
+        style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: 9,
+          letterSpacing: '0.18em',
+          textTransform: 'uppercase',
+          color: 'var(--gold)',
+          border: '1px solid rgba(200,169,110,0.35)',
+          padding: '5px 12px',
+          borderRadius: 999,
+          transition: 'color 0.25s cubic-bezier(0.32,0.72,0,1), border-color 0.25s cubic-bezier(0.32,0.72,0,1)',
+        }}
+      >
+        {label}
+      </motion.a>
+    )
+  }
+
   return (
     <motion.a
       href={hrefFor(label)}
