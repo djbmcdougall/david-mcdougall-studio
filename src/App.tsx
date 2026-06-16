@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import { Routes, Route } from 'react-router-dom'
 import { MotionConfig } from 'framer-motion'
 import Cursor from './components/Cursor'
@@ -29,6 +30,7 @@ export default function App() {
   return (
     // reducedMotion="user" makes all Framer Motion animations respect prefers-reduced-motion
     <MotionConfig reducedMotion="user">
+      <Analytics />
       <a href="#hero" className="skip-link">Skip to content</a>
       <Cursor />
       <GrainOverlay />
