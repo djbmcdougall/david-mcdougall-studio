@@ -29,6 +29,7 @@ export default function App() {
   return (
     // reducedMotion="user" makes all Framer Motion animations respect prefers-reduced-motion
     <MotionConfig reducedMotion="user">
+      <a href="#hero" className="skip-link">Skip to content</a>
       <Cursor />
       <GrainOverlay />
       <CursorTrail active={booted} />

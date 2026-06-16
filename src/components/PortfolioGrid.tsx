@@ -130,15 +130,30 @@ export default function PortfolioGrid() {
         </h2>
 
         {/* Tabs */}
-        <div role="tablist" aria-label="Work categories" style={{ display: 'flex', gap: 4 }}>
-          {TABS.map((tab) => (
+        <div
+          role="tablist"
+          aria-label="Work categories"
+          aria-orientation="horizontal"
+          style={{ display: 'flex', gap: 4 }}
+        >
+          {TABS.map((tab, i) => (
             <button
               key={tab.id}
               role="tab"
               aria-selected={activeTab === tab.id}
               aria-controls="work-panel"
+              tabIndex={activeTab === tab.id ? 0 : -1}
               className="portfolio-tab"
               onClick={() => setActiveTab(tab.id)}
+              onKeyDown={(e) => {
+                if (e.key === 'ArrowRight') {
+                  setActiveTab(TABS[(i + 1) % TABS.length].id)
+                  ;(e.currentTarget.parentElement?.children[(i + 1) % TABS.length] as HTMLElement)?.focus()
+                } else if (e.key === 'ArrowLeft') {
+                  setActiveTab(TABS[(i - 1 + TABS.length) % TABS.length].id)
+                  ;(e.currentTarget.parentElement?.children[(i - 1 + TABS.length) % TABS.length] as HTMLElement)?.focus()
+                }
+              }}
               style={{
                 fontFamily: 'var(--font-mono)',
                 fontSize: 9,
