@@ -1,6 +1,41 @@
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useCallback, useRef, useState } from 'react'
+
+const IG_IMAGES = Array.from({ length: 12 }, (_, i) => `/gallery/gallery-${String(i + 1).padStart(2, '0')}.jpg`)
+
+const CYCLE_DISTANCE = 120
 
 export default function CTA() {
+  const [imgIndex, setImgIndex]   = useState(0)
+  const [imgKey, setImgKey]       = useState(0)
+  const [imgPos, setImgPos]       = useState({ x: 0, y: 0 })
+  const [imgVisible, setImgVisible] = useState(false)
+
+  const distRef    = useRef(0)
+  const lastPosRef = useRef({ x: 0, y: 0 })
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+
+    const dx = x - lastPosRef.current.x
+    const dy = y - lastPosRef.current.y
+    distRef.current += Math.sqrt(dx * dx + dy * dy)
+    lastPosRef.current = { x, y }
+
+    setImgPos({ x, y })
+
+    if (distRef.current >= CYCLE_DISTANCE) {
+      distRef.current = 0
+      setImgIndex(i => (i + 1) % IG_IMAGES.length)
+      setImgKey(k => k + 1)
+    }
+  }, [])
+
+  const handleMouseEnter = useCallback(() => setImgVisible(true), [])
+  const handleMouseLeave = useCallback(() => setImgVisible(false), [])
+
   return (
     <motion.section
       id="contact"
@@ -8,14 +43,47 @@ export default function CTA() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.9, ease: [0.32, 0.72, 0, 1] }}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       style={{
         padding: '100px 40px 100px',
         maxWidth: 1200,
         margin: '0 auto',
         position: 'relative',
         borderTop: '0.5px solid var(--border)',
+        overflow: 'hidden',
       }}
     >
+      <AnimatePresence>
+        {imgVisible && (
+          <motion.div
+            key={imgKey}
+            initial={{ opacity: 0, scale: 0.88 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.92 }}
+            transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] }}
+            style={{
+              position: 'absolute',
+              left: imgPos.x,
+              top: imgPos.y,
+              transform: 'translate(-50%, -60%)',
+              width: 220,
+              height: 160,
+              pointerEvents: 'none',
+              zIndex: 10,
+              overflow: 'hidden',
+            }}
+          >
+            <img
+              src={IG_IMAGES[imgIndex]}
+              alt=""
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <p style={{
         fontFamily: 'var(--font-mono)',
         fontSize: 9,
