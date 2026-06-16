@@ -305,6 +305,44 @@ function WorkRow({ item, index, onPlay, onHover }: {
           {item.type}
         </span>
       </div>
+
+      {/* Gold play button */}
+      {item.link && (
+        <motion.div
+          animate={{
+            scale: hovered ? 1.12 : 1,
+            backgroundColor: hovered ? 'rgba(200,169,110,0.18)' : 'rgba(200,169,110,0.06)',
+            borderColor: hovered ? 'rgba(200,169,110,0.7)' : 'rgba(200,169,110,0.3)',
+          }}
+          transition={{ type: 'spring', stiffness: 300, damping: 24 }}
+          style={{
+            flexShrink: 0,
+            marginLeft: 24,
+            width: 44,
+            height: 44,
+            borderRadius: '50%',
+            border: '1px solid rgba(200,169,110,0.3)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1,
+          }}
+        >
+          {/* Play triangle */}
+          <motion.div
+            animate={{ x: hovered ? 2 : 1 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 24 }}
+            style={{
+              width: 0,
+              height: 0,
+              borderTop: '7px solid transparent',
+              borderBottom: '7px solid transparent',
+              borderLeft: '12px solid var(--gold)',
+              marginLeft: 2,
+            }}
+          />
+        </motion.div>
+      )}
     </motion.div>
   )
 }
