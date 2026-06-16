@@ -261,6 +261,29 @@
       color: var(--muted);
     }
 
+    .spec-disclaimer {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      color: rgba(232,226,213,0.35);
+      text-align: center;
+      padding: 18px 40px 10px;
+      line-height: 1.7;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .spec-credit {
+      display: block;
+      margin-top: 4px;
+      color: rgba(232,226,213,0.2);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-size: 8px;
+    }
+    @media (max-width: 600px) {
+      .spec-disclaimer { padding: 14px 20px 8px; }
+    }
+
     /* ════════════════════════════════════
        3. LOGLINE CARD
     ════════════════════════════════════ */
@@ -668,6 +691,7 @@
      2. FILM EMBED
 ════════════════════════════════════ -->
 <section class="embed-section">
+  <p class="spec-disclaimer">A spec film. Not affiliated with, authorised by, or endorsed by Nike. No brand, person, or organisation depicted has any involvement. Created as an independent demonstration of AI production craft.<br><span class="spec-credit">Directed by David McDougall · McDougall.studio</span></p>
   <div class="embed-container reveal">
     <iframe src="https://player.vimeo.com/video/1200432945?color=c8a96e&title=0&byline=0&portrait=0" allowfullscreen></iframe>
   </div>
