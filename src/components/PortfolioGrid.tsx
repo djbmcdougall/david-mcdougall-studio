@@ -197,15 +197,15 @@ function WorkRow({ item, index, onPlay, onHover }: {
   onHover: (thumb: string | null) => void
 }) {
   const [hovered, setHovered] = useState(false)
+  const [nearPlay, setNearPlay] = useState(false)
 
   return (
     <motion.div
       onHoverStart={() => {
         setHovered(true)
-        const thumb = item.thumb ?? null
-        onHover(thumb)
+        if (!nearPlay) onHover(item.thumb ?? null)
       }}
-      onHoverEnd={() => { setHovered(false); onHover(null) }}
+      onHoverEnd={() => { setHovered(false); setNearPlay(false); onHover(null) }}
       onClick={() => item.link && onPlay(item.link)}
       style={{
         position: 'relative',
@@ -309,17 +309,19 @@ function WorkRow({ item, index, onPlay, onHover }: {
       {/* Gold play button */}
       {item.link && (
         <motion.div
+          onMouseEnter={() => { setNearPlay(true); onHover(null) }}
+          onMouseLeave={() => { setNearPlay(false); if (hovered) onHover(item.thumb ?? null) }}
           animate={{
-            scale: hovered ? 1.12 : 1,
+            scale: hovered ? 1.08 : 1,
             backgroundColor: hovered ? 'rgba(200,169,110,0.18)' : 'rgba(200,169,110,0.06)',
             borderColor: hovered ? 'rgba(200,169,110,0.7)' : 'rgba(200,169,110,0.3)',
           }}
           transition={{ type: 'spring', stiffness: 300, damping: 24 }}
           style={{
             flexShrink: 0,
-            marginLeft: 24,
-            width: 44,
-            height: 44,
+            marginLeft: 16,
+            width: 31,
+            height: 31,
             borderRadius: '50%',
             border: '1px solid rgba(200,169,110,0.3)',
             display: 'flex',
@@ -330,14 +332,14 @@ function WorkRow({ item, index, onPlay, onHover }: {
         >
           {/* Play triangle */}
           <motion.div
-            animate={{ x: hovered ? 2 : 1 }}
+            animate={{ x: hovered ? 1 : 0 }}
             transition={{ type: 'spring', stiffness: 300, damping: 24 }}
             style={{
               width: 0,
               height: 0,
-              borderTop: '7px solid transparent',
-              borderBottom: '7px solid transparent',
-              borderLeft: '12px solid var(--gold)',
+              borderTop: '5px solid transparent',
+              borderBottom: '5px solid transparent',
+              borderLeft: '8px solid var(--gold)',
               marginLeft: 2,
             }}
           />
