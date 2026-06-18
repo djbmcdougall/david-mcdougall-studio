@@ -15,10 +15,12 @@ import Pillars from './components/Pillars'
 import PortfolioGrid from './components/PortfolioGrid'
 import TravelSeries from './components/TravelSeries'
 import Testimonials from './components/Testimonials'
+import FAQ from './components/FAQ'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
 
 const CVPage = lazy(() => import('./pages/CVPage'))
+const AIProductionPage = lazy(() => import('./pages/AIProductionPage'))
 
 export default function App() {
   const [booted, setBooted] = useState(false)
@@ -51,10 +53,12 @@ export default function App() {
               <PortfolioGrid />
               <TravelSeries />
               <Testimonials />
+              <FAQ />
               <CTA />
             </main>
           } />
           <Route path="/cv" element={<Suspense fallback={null}><CVPage /></Suspense>} />
+          <Route path="/ai-production" element={<Suspense fallback={null}><AIProductionPage /></Suspense>} />
         </Routes>
         <Footer />
       </div>

@@ -133,6 +133,17 @@ a {
   .testimonials-grid {
     grid-template-columns: 1fr !important;
   }
+
+  /* Process grid on AI production page: 2 columns on mobile */
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Padding adjustments for inner pages */
+  section[style*="padding: '0 40px"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
