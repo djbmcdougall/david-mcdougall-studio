@@ -47,6 +47,7 @@ export default function Showreel() {
 function ReelBox({ reel, index }: { reel: typeof REELS[0]; index: number }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [shouldLoad, setShouldLoad] = useState(false)
+  const [thumbError, setThumbError] = useState(false)
 
   useEffect(() => {
     const el = containerRef.current
@@ -110,11 +111,40 @@ function ReelBox({ reel, index }: { reel: typeof REELS[0]; index: number }) {
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
             />
+          ) : thumbError ? (
+            <div style={{
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'linear-gradient(135deg, #0d0c0a 0%, #070706 100%)',
+            }}>
+              <div style={{
+                width: 40,
+                height: 40,
+                borderRadius: '50%',
+                border: '1px solid rgba(200,169,110,0.3)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+                <div style={{
+                  width: 0,
+                  height: 0,
+                  borderTop: '7px solid transparent',
+                  borderBottom: '7px solid transparent',
+                  borderLeft: '11px solid rgba(200,169,110,0.6)',
+                  marginLeft: 3,
+                }} />
+              </div>
+            </div>
           ) : (
             <img
               src={`https://vumbnail.com/${reel.vimeoId}.jpg`}
               alt={reel.label}
               loading="lazy"
+              onError={() => setThumbError(true)}
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
           )}

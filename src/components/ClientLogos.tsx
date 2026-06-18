@@ -91,19 +91,21 @@ export default function ClientLogos() {
                 flexShrink: 0,
                 margin: '0 12px',
                 padding: '14px 28px',
-                background: '#ffffff',
-                border: '0.5px solid rgba(255,255,255,0.15)',
+                background: 'rgba(232,226,213,0.03)',
+                border: '0.5px solid rgba(232,226,213,0.07)',
                 borderRadius: 6,
-                transition: 'box-shadow 0.25s, border-color 0.25s',
+                transition: 'border-color 0.25s, background 0.25s',
                 cursor: 'default',
               }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget as HTMLDivElement
-                el.style.boxShadow = '0 0 0 1.5px rgba(200,169,110,0.5)'
+                el.style.borderColor = 'rgba(200,169,110,0.3)'
+                el.style.background = 'rgba(200,169,110,0.05)'
               }}
               onMouseLeave={(e) => {
                 const el = e.currentTarget as HTMLDivElement
-                el.style.boxShadow = 'none'
+                el.style.borderColor = 'rgba(232,226,213,0.07)'
+                el.style.background = 'rgba(232,226,213,0.03)'
               }}
             >
               <img
@@ -118,8 +120,9 @@ export default function ClientLogos() {
                   maxWidth: 130,
                   objectFit: 'contain',
                   display: 'block',
-                  mixBlendMode: 'multiply',
-                  filter: logo.forceBlack ? 'brightness(0)' : 'none',
+                  filter: 'brightness(0) invert(1)',
+                  opacity: 0.5,
+                  transition: 'opacity 0.25s',
                 }}
               />
             </div>

@@ -191,9 +191,10 @@ export default function Hero({ booted }: HeroProps) {
               fontFamily: 'var(--font-display)',
               fontSize: 'clamp(56px, 8vw, 96px)',
               lineHeight: 0.95,
-              letterSpacing: '0.02em',
+              letterSpacing: '0.01em',
               marginBottom: 28,
               userSelect: 'none',
+              whiteSpace: 'nowrap',
             }}
           >
             {NAME.split('').map((char, i) => (
@@ -245,7 +246,7 @@ export default function Hero({ booted }: HeroProps) {
                   fontSize: 10,
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase',
-                  color: 'var(--fg-dim)',
+                  color: 'rgba(232,226,213,0.75)',
                 }}>
                   {stat.label}
                 </span>
@@ -281,7 +282,7 @@ export default function Hero({ booted }: HeroProps) {
                   fontWeight: 400,
                   fontSize: 14,
                   lineHeight: 1.75,
-                  color: 'var(--fg-dim)',
+                  color: 'rgba(232,226,213,0.72)',
                   marginBottom: 14,
                 }}
               >
