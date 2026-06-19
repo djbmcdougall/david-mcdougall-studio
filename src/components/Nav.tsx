@@ -7,7 +7,7 @@ const LINKS = ['Reels', 'About', 'Work', 'CV', 'AI Case Study', 'Contact']
 function hrefFor(label: string) {
   if (label === 'Reels') return '#showreel'
   if (label === 'About') return '#hero'
-  if (label === 'CV') return '/cv.html'
+  if (label === 'CV') return '/cv'
   if (label === 'AI Case Study') return '/blessed-are-the-pacemakers.html'
   return `#${label.toLowerCase()}`
 }

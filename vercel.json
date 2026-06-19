@@ -1,5 +1,8 @@
 {
   "framework": "vite",
+  "redirects": [
+    { "source": "/cv.html", "destination": "/cv", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/((?!assets|logos|Portfolio%20IG%20Pictures|Portfolio IG Pictures|work|travel|david-about|og-image|favicon|icons|llms|robots|sitemap).*)", "destination": "/index.html" }
   ]
