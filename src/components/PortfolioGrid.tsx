@@ -293,7 +293,7 @@ function WorkRow({ item, index, onPlay, onHover }: {
               fontSize: 8,
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
-              color: 'rgba(200,169,110,0.55)',
+              color: 'rgba(200,169,110,0.85)',
             }}>
               {item.role}
             </span>
@@ -313,7 +313,7 @@ function WorkRow({ item, index, onPlay, onHover }: {
           fontSize: 9,
           letterSpacing: '0.12em',
           textTransform: 'uppercase',
-          color: 'rgba(232,226,213,0.3)',
+          color: 'rgba(232,226,213,0.6)',
           width: 160,
           textAlign: 'right',
         }}>

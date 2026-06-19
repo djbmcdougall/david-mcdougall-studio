@@ -216,7 +216,7 @@ function Pillar({ num, title, tagline, body, index }: {
         fontWeight: 400,
         fontSize: 13,
         lineHeight: 1.65,
-        color: 'rgba(232,226,213,0.45)',
+        color: 'rgba(232,226,213,0.65)',
         marginBottom: 28,
       }}>
         {body}

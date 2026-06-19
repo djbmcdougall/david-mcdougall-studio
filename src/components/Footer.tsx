@@ -31,7 +31,7 @@ export default function Footer() {
             fontFamily: 'var(--font-display)',
             fontSize: 13,
             letterSpacing: '0.22em',
-            color: 'rgba(232,226,213,0.45)',
+            color: 'rgba(232,226,213,0.65)',
           }}>
             mcdougall.studio
           </span>
@@ -39,7 +39,7 @@ export default function Footer() {
             fontFamily: 'var(--font-mono)',
             fontSize: 9,
             letterSpacing: '0.15em',
-            color: 'rgba(232,226,213,0.4)',
+            color: 'rgba(232,226,213,0.6)',
           }}>
             © {new Date().getFullYear()} David McDougall. All rights reserved.
           </p>
@@ -58,11 +58,11 @@ export default function Footer() {
                 fontSize: 9,
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
-                color: 'rgba(232,226,213,0.5)',
+                color: 'rgba(232,226,213,0.65)',
                 transition: 'color 0.3s cubic-bezier(0.32,0.72,0,1)',
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--gold)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(232,226,213,0.5)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(232,226,213,0.65)')}
             >
               {label}
             </a>

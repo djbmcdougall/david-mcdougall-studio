@@ -111,42 +111,58 @@ function ReelBox({ reel, index }: { reel: typeof REELS[0]; index: number }) {
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
             />
-          ) : thumbError ? (
-            <div style={{
-              width: '100%',
-              height: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              background: 'linear-gradient(135deg, #0d0c0a 0%, #070706 100%)',
-            }}>
+          ) : (
+            <>
+              {/* Thumbnail — vumbnail fallback, or dark gradient if image fails */}
+              {thumbError ? (
+                <div style={{
+                  width: '100%',
+                  height: '100%',
+                  background: 'linear-gradient(135deg, #0d0c0a 0%, #070706 100%)',
+                }} />
+              ) : (
+                <img
+                  src={`https://vumbnail.com/${reel.vimeoId}.jpg`}
+                  alt={reel.label}
+                  loading="lazy"
+                  onError={() => setThumbError(true)}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                />
+              )}
+
+              {/* Play affordance — always visible over thumbnail/fallback */}
               <div style={{
-                width: 40,
-                height: 40,
-                borderRadius: '50%',
-                border: '1px solid rgba(200,169,110,0.3)',
+                position: 'absolute',
+                inset: 0,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                background: 'rgba(7,7,6,0.25)',
+                zIndex: 2,
+                pointerEvents: 'none',
               }}>
                 <div style={{
-                  width: 0,
-                  height: 0,
-                  borderTop: '7px solid transparent',
-                  borderBottom: '7px solid transparent',
-                  borderLeft: '11px solid rgba(200,169,110,0.6)',
-                  marginLeft: 3,
-                }} />
+                  width: 44,
+                  height: 44,
+                  borderRadius: '50%',
+                  border: '1px solid rgba(200,169,110,0.5)',
+                  background: 'rgba(7,7,6,0.55)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backdropFilter: 'blur(4px)',
+                }}>
+                  <div style={{
+                    width: 0,
+                    height: 0,
+                    borderTop: '7px solid transparent',
+                    borderBottom: '7px solid transparent',
+                    borderLeft: '11px solid rgba(200,169,110,0.8)',
+                    marginLeft: 3,
+                  }} />
+                </div>
               </div>
-            </div>
-          ) : (
-            <img
-              src={`https://vumbnail.com/${reel.vimeoId}.jpg`}
-              alt={reel.label}
-              loading="lazy"
-              onError={() => setThumbError(true)}
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-            />
+            </>
           )}
 
           {/* HUD readout */}
