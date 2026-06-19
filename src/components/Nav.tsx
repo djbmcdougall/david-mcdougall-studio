@@ -1,21 +1,25 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useLocation } from 'react-router-dom'
 
 const LINKS = ['Reels', 'About', 'Work', 'CV', 'AI Case Study', 'Contact']
 
-// Page routes; all others are anchor links on the home page
-function hrefFor(label: string) {
-  if (label === 'Reels') return '#showreel'
-  if (label === 'About') return '#hero'
+// On sub-pages, prefix anchor links with / so browser navigates home then scrolls
+function hrefFor(label: string, onHome: boolean) {
+  const p = onHome ? '' : '/'
+  if (label === 'Reels') return `${p}#showreel`
+  if (label === 'About') return `${p}#hero`
   if (label === 'CV') return '/cv'
   if (label === 'AI Case Study') return '/blessed-are-the-pacemakers.html'
-  return `#${label.toLowerCase()}`
+  return `${p}#${label.toLowerCase()}`
 }
 
 const SPRING = { type: 'spring' as const, stiffness: 400, damping: 30 }
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
+  const { pathname } = useLocation()
+  const onHome = pathname === '/'
 
   return (
     <>
@@ -84,7 +88,7 @@ export default function Nav() {
           {/* Desktop links */}
           <div className="nav-desktop-links" style={{ display: 'flex', gap: 20 }}>
             {LINKS.map((label) => (
-              <NavLink key={label} label={label} />
+              <NavLink key={label} label={label} onHome={onHome} />
             ))}
           </div>
 
@@ -165,7 +169,7 @@ export default function Nav() {
             {LINKS.map((label, i) => (
               <motion.a
                 key={label}
-                href={hrefFor(label)}
+                href={hrefFor(label, onHome)}
                 onClick={() => setOpen(false)}
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -193,13 +197,13 @@ export default function Nav() {
   )
 }
 
-function NavLink({ label }: { label: string }) {
+function NavLink({ label, onHome }: { label: string; onHome: boolean }) {
   const isCta = label === 'Contact'
 
   if (isCta) {
     return (
       <motion.a
-        href={hrefFor(label)}
+        href={hrefFor(label, onHome)}
         whileHover={{ borderColor: 'rgba(200,169,110,0.7)', color: 'var(--gold)' }}
         style={{
           fontFamily: 'var(--font-mono)',
@@ -220,7 +224,7 @@ function NavLink({ label }: { label: string }) {
 
   return (
     <motion.a
-      href={hrefFor(label)}
+      href={hrefFor(label, onHome)}
       whileHover={{ opacity: 1 }}
       style={{
         fontFamily: 'var(--font-mono)',
