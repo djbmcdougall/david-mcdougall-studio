@@ -18,41 +18,41 @@ const JOBS: { title: string; company: string; location: string; dates: string; b
     title: 'Founder & AI Creative Producer',
     company: 'Murmur Labs Ltd',
     location: 'Richmond, North Yorkshire',
-    dates: '2023 – Present',
+    dates: 'Mar 2023 – Present',
     bullets: [
-      'Founded an AI-native product studio developing voice-first and aural intelligence applications.',
-      'Built Voco — a Voice AI assistant integrating Vapi, ElevenLabs, and LLM backends for automated outbound and inbound calling.',
-      'Developed MintSkills — a verified commercial marketplace for agent-native developer tools with a proprietary 4-stage security pipeline.',
-      'Applied generative AI video tools (Runway ML, Kling, Luma) and AI audio pipelines to broadcast-quality film and media production.',
+      <>Built <B>Voco</B> — a production-grade Voice AI assistant integrating ElevenLabs, Vapi, and LLM backends for automated, context-aware outbound calling and inbound handling.</>,
+      <>Developing <B>MintSkills</B> — a verified commercial marketplace for agent-native developer tools, featuring a proprietary 4-stage security and verification pipeline.</>,
+      <>Architected AI-native media pipelines combining generative video (<B>Runway ML</B>, <B>Kling</B>, <B>Sora</B>) with advanced audio synthesis — compressing broadcast-quality production timelines by 60–80%.</>,
+      'Produced AI-native short-form content demonstrating generative storytelling workflows for social and creator audiences across YouTube and Instagram.',
     ],
   },
   {
-    title: 'Executive Producer',
+    title: 'Executive Producer / Series Director',
     company: 'The Wired Agency',
     location: 'Doha, Qatar',
     dates: 'Sep 2013 – Feb 2023',
     bullets: [
-      <>Series-directed <em>The Journey</em> — a 15-part bilingual (Arabic/English) travel series for <B>Al Jazeera</B>, reaching 50M+ viewers across MENA.</>,
-      <>Delivered premium branded content for <B>Total</B>, <B>Harrods</B>, <B>Land Rover</B>, <B>Qatar Airways</B>, Hamad International Airport, <B>Qatar Foundation</B>, and Qatar Media Corporation.</>,
+      <>Series-directed <em>The Journey</em> — a 15-part bilingual (Arabic/English) travel documentary for <B>Al Jazeera</B>, reaching 50M+ viewers across MENA.</>,
+      <>Led high-budget visual storytelling campaigns and localised multi-language content for <B>Total</B>, <B>Harrods</B>, <B>Land Rover</B>, <B>Qatar Airways</B>, Hamad International Airport, and <B>Qatar Foundation</B>.</>,
+      'Managed multi-disciplinary international crews across complex cross-border productions with multi-lingual post-production mastering.',
     ],
   },
   {
-    title: 'Senior Producer · Director',
+    title: 'Senior Producer',
     company: 'Qatar Media Corporation (State Broadcaster)',
     location: 'Doha, Qatar',
     dates: 'Sep 2018 – Feb 2020',
     bullets: [
-      'Developed and produced TV programmes, online content, and promos for a new English-language channel.',
-      <>Director — <em>Secrets of Qatar</em> (Parts 1 &amp; 2), broadcast documentary for <B>Qatar Media Corporation</B>.</>,
+      <>Designed, built, and launched high-impact TV programming, promotional campaigns, and digital content for a new English-language broadcast channel. (Embedded secondment from The Wired Agency.)</>,
     ],
   },
   {
     title: 'Content Director',
     company: 'Freelance',
-    location: 'Europe, Middle East, South East Asia',
+    location: 'Europe, Middle East & South East Asia',
     dates: 'Jun 2009 – Sep 2013',
     bullets: [
-      <>Directed branded content and documentary assignments across Myanmar, Thailand, Hong Kong, Philippines, Bahrain, and UK — clients included <B>Daily Telegraph</B>, Monocle Magazine, and University of Durham.</>,
+      <>Produced and directed branded content and investigative documentaries across Myanmar, Thailand, Hong Kong, Philippines, Bahrain, and the UK for the <B>Daily Telegraph</B>, Monocle Magazine, and the University of Durham.</>,
     ],
   },
   {
@@ -61,7 +61,7 @@ const JOBS: { title: string; company: string; location: string; dates: string; b
     location: 'Dubai, UAE',
     dates: 'Jul 2007 – Jul 2009',
     bullets: [
-      <>Directed branded content, documentaries, TVCs and virals for <B>Armani</B>, <B>Ferragamo</B>, <B>Emirates Airlines</B>, <B>McKinsey</B>, <B>Bloomberg</B>, and <B>CNN</B> — via agencies TBWA, Leo Burnett, Ogilvy, and Grey.</>,
+      <>Delivered branded content, TVCs, and documentaries for <B>Armani</B>, <B>Ferragamo</B>, <B>Emirates Airlines</B>, <B>McKinsey</B>, <B>Bloomberg</B>, and <B>CNN</B> — via agencies TBWA, Leo Burnett, Ogilvy, and Grey.</>,
     ],
   },
   {
@@ -70,7 +70,7 @@ const JOBS: { title: string; company: string; location: string; dates: string; b
     location: 'London',
     dates: 'Apr 2004 – Jun 2007',
     bullets: [
-      <>Production Manager — <B>BBC4</B> Storyville (<em>The Curse of Oil</em>). Line Producer — <B>Discovery</B> (<em>Atlas: Italy Revealed</em>). Produced and developed for <B>BBC</B> Horizon, <B>Channel 4</B> News, <B>PBS</B>, and <B>National Geographic</B>.</>,
+      <>Credits include <B>BBC</B> Horizon, <B>BBC</B> Storyville, <B>Channel 4</B> News, <B>PBS</B>, <B>Discovery</B>, and <B>National Geographic</B>.</>,
     ],
   },
   {
@@ -86,32 +86,32 @@ const JOBS: { title: string; company: string; location: string; dates: string; b
     location: 'Windsor, UK',
     dates: 'Sep 2001 – Apr 2003',
     bullets: [
-      'Produced investigations and current affairs documentary content.',
+      'Investigations and current affairs documentary production.',
     ],
   },
 ]
 
 const COMPETENCIES = [
   {
-    title: 'AI & Emerging Tech',
-    body: 'Generative AI · AI video pipelines · Voice AI (Vapi / ElevenLabs) · Prompt engineering · Agent-native development · AI product strategy · LLM workflows',
+    title: 'AI & Voice',
+    body: 'Generative AI video & audio · Voice AI (ElevenLabs, Vapi) · Prompt engineering · Agent-native development · LLM workflows & MCP',
   },
   {
     title: 'Production & Direction',
-    body: 'Documentary filmmaking · Branded content · Broadcast series direction · Executive producing · Multi-platform content · Post-production',
+    body: 'Documentary filmmaking · Broadcast series direction · Branded & social content · Executive producing · Post-production & editing',
   },
   {
     title: 'Creative & Strategy',
-    body: 'Narrative development · Creative direction · Content strategy · Brand storytelling · New business development · AI creative consulting',
+    body: 'Narrative development · Content strategy & GEO · Brand storytelling · Cross-platform localisation · AI creative consulting',
   },
 ]
 
 const SKILLS = [
   { label: 'AI Video',    val: 'Runway ML · Kling · Luma Dream Machine · Sora · Midjourney · Pika' },
-  { label: 'Voice AI',   val: 'ElevenLabs · Vapi · Whisper · TTS pipelines · Agentic voice workflows' },
-  { label: 'LLMs',       val: 'Claude · GPT-4o · Gemini · Prompt engineering · Agent-native development' },
-  { label: 'Dev Stack',  val: 'React · TypeScript · Tailwind · Claude Code · Vercel · MCP · Node.js' },
-  { label: 'Production', val: 'Final Cut Pro · Premiere · DaVinci Resolve · After Effects · Avid' },
+  { label: 'Voice AI',   val: 'ElevenLabs (Deep Voice Design, API Deployment, Multilingual Generation) · Vapi · Whisper · TTS/STT pipelines · Agentic voice orchestration' },
+  { label: 'LLMs',       val: 'Claude (Claude Code) · GPT-4o · Gemini · Prompt engineering · MCP · Agent-native development' },
+  { label: 'Dev Stack',  val: 'React · TypeScript · Tailwind CSS · Node.js · Vercel (AI-assisted full-stack development)' },
+  { label: 'Production', val: 'Adobe Premiere · DaVinci Resolve · Final Cut Pro · After Effects · Avid' },
 ]
 
 const RULE: React.CSSProperties = {
@@ -188,7 +188,7 @@ export default function CVPage() {
               marginBottom: 14,
             }}
           >
-            AI Filmmaker · Creative Director · Aural Intelligence Producer
+            AI Creative Producer · Voice AI Specialist · Documentary Filmmaker
           </motion.p>
 
           <motion.div
@@ -272,15 +272,16 @@ export default function CVPage() {
             maxWidth: '72ch',
           }}
         >
-          Award-winning documentary filmmaker and creative director with 20+ years across BBC,
-          Al Jazeera, Channel 4, Discovery, National Geographic, and PBS — and a track record of
-          blue chip brand production for Armani, Ferragamo, Emirates Airlines, Jumeirah, Harrods,
-          and Qatar Foundation. Now building at the intersection of AI, voice, and cinematic
-          storytelling. Founder of Murmur Labs Ltd, an AI-native studio developing voice-first
-          products and aural intelligence platforms. Experienced in generative AI video production
-          pipelines, AI voiceover (ElevenLabs, Vapi), prompt engineering for creative applications,
-          and AI-assisted content strategy. Fluent in the full production stack from concept to
-          delivery — and in the emerging agent-native tooling reshaping it.
+          Documentary filmmaker and creative director with 20+ years across BBC,
+          Al Jazeera, Channel 4, Discovery, National Geographic, and PBS — now
+          building at the intersection of AI, voice, and cinematic storytelling.
+          Founder of Murmur Labs Ltd, an AI-native studio developing voice-first
+          products and aural intelligence platforms. Deep hands-on experience with
+          generative AI video and audio production pipelines, advanced ElevenLabs
+          API deployment, prompt engineering for creative applications, and
+          AI-assisted content strategy. Fluent in the full production stack from
+          concept to delivery — and in the emerging agent-native tooling reshaping
+          the media landscape.
         </motion.p>
 
         {/* ── Core Competencies ───────────────────────────────────────── */}
@@ -477,7 +478,7 @@ export default function CVPage() {
             letterSpacing: '0.14em',
             color: 'rgba(232,226,213,0.3)',
           }}>
-            Portfolio · Showreel · AI Showcase:{' '}
+            Portfolio & Showreel:{' '}
             <a
               href="https://mcdougall.studio"
               target="_blank"
@@ -485,6 +486,15 @@ export default function CVPage() {
               style={{ color: 'var(--gold)', textDecoration: 'none' }}
             >
               mcdougall.studio
+            </a>
+            {' '}· AI Case Study:{' '}
+            <a
+              href="https://mcdougall.studio/blessed-are-the-pacemakers.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: 'var(--gold)', textDecoration: 'none' }}
+            >
+              Blessed Are the Pacemakers
             </a>
           </p>
           <a
