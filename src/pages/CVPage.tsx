@@ -281,7 +281,9 @@ export default function CVPage() {
           API deployment, prompt engineering for creative applications, and
           AI-assisted content strategy. Fluent in the full production stack from
           concept to delivery — and in the emerging agent-native tooling reshaping
-          the media landscape.
+          the media landscape. An early adopter of blockchain since 2013, I've
+          followed the space closely ever since and architected Cull Carbon, a
+          carbon-offset venture, around an on-chain verification layer.
         </motion.p>
 
         {/* ── Core Competencies ───────────────────────────────────────── */}
