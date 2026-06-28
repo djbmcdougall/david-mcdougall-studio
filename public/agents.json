@@ -1,0 +1,27 @@
+{
+  "name": "David McDougall Studio",
+  "description": "Award-winning AI filmmaker and Creative Director. Broadcast-quality AI content, documentary, and branded film. 20+ years directing for BBC, Al Jazeera, Channel 4, PBS, Discovery, and National Geographic.",
+  "url": "https://mcdougall.studio",
+  "contact": "davidmcdougall@proton.me",
+  "capabilities": [
+    "AI content production",
+    "Broadcast documentary direction",
+    "Branded film production",
+    "Brand identity and design",
+    "Voice AI production",
+    "AI workflow consultation"
+  ],
+  "identity": {
+    "person": "David McDougall",
+    "imdb": "nm2040426",
+    "location": "Richmond, North Yorkshire, UK",
+    "nationality": "British"
+  },
+  "links": {
+    "llms_txt": "https://mcdougall.studio/llms.txt",
+    "sitemap": "https://mcdougall.studio/sitemap.xml",
+    "imdb": "https://www.imdb.com/name/nm2040426/",
+    "vimeo": "https://vimeo.com/davidmcdougall",
+    "linkedin": "https://www.linkedin.com/in/david-mcdougall-7861287/"
+  }
+}
