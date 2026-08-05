@@ -187,6 +187,7 @@ export default function Hero({ booted }: HeroProps) {
           {/* Magnetic name */}
           <h1
             aria-label="David McDougall"
+            className="hero-name"
             style={{
               fontFamily: 'var(--font-display)',
               fontSize: 'clamp(56px, 8vw, 96px)',

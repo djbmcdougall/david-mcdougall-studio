@@ -139,10 +139,97 @@ a {
     grid-template-columns: repeat(2, 1fr) !important;
   }
 
-  /* Padding adjustments for inner pages */
-  section[style*="padding: '0 40px"] {
+  /* The name is white-space: nowrap, so a 56px floor forced a 320px
+     min-width and pushed the whole hero column past the viewport */
+  .hero-name {
+    font-size: clamp(34px, 11vw, 52px) !important;
+  }
+
+  /* Section gutters: 40px eats a fifth of a 375px screen */
+  .section-pad {
     padding-left: 20px !important;
     padding-right: 20px !important;
+  }
+
+  /* Selected Work rows: stack index + title + play on one line,
+     credits underneath, instead of a five-column desktop row */
+  .work-row {
+    flex-wrap: wrap;
+    align-items: flex-start !important;
+    padding: 22px 0 !important;
+    row-gap: 10px;
+  }
+  .work-row-index {
+    order: 1;
+    width: 26px !important;
+    margin-top: 7px;
+  }
+  .work-row-title {
+    order: 2;
+    min-width: 0;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    font-size: 24px !important;
+    line-height: 1.15 !important;
+  }
+  .work-row-play {
+    order: 3;
+    margin-left: 0 !important;
+    margin-top: 3px;
+  }
+  .work-row-meta {
+    order: 4;
+    flex: 1 0 100%;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 3px !important;
+    padding-left: 38px;
+  }
+  .work-row-names {
+    align-items: flex-start !important;
+  }
+  .work-row-type {
+    width: auto !important;
+    text-align: left !important;
+  }
+
+  /* Tab controls: 26px tall is under the 44px touch minimum */
+  .portfolio-tab {
+    padding: 12px 16px !important;
+    font-size: 10px !important;
+  }
+
+  /* Travel carousel: 560px cards were cropped by both screen edges */
+  .carousel-stage {
+    height: 250px !important;
+  }
+  .carousel-card {
+    width: 86vw !important;
+  }
+  /* 15 padded dots need the tighter gap to stay on one line */
+  .carousel-dots {
+    gap: 1px !important;
+    margin-top: 12px !important;
+  }
+
+  /* Showreel HUD strip: let it wrap inside the viewfinder corners */
+  .reel-hud {
+    white-space: normal !important;
+    letter-spacing: 0.12em !important;
+    max-width: calc(100% - 60px);
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  /* Footer: wordmark above links rather than a squeezed row */
+  .footer-row {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 28px;
+  }
+  .footer-social {
+    flex-wrap: wrap;
+    gap: 16px 22px !important;
   }
 }
 

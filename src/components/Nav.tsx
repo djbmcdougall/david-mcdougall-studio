@@ -99,8 +99,12 @@ export default function Nav() {
             style={{
               background: 'none',
               border: 'none',
-              padding: '4px 8px',
-              gap: 4,
+              width: 44,
+              height: 44,
+              margin: '0 -12px 0 0',
+              padding: 0,
+              gap: 5,
+              alignItems: 'center',
               flexDirection: 'column',
               justifyContent: 'center',
             }}

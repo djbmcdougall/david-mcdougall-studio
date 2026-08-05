@@ -46,6 +46,7 @@ export default function CTA() {
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      className="section-pad"
       style={{
         padding: '100px 40px 100px',
         maxWidth: 1200,

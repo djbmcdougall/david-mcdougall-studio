@@ -4,7 +4,7 @@ import { testimonials } from '../data/testimonials'
 export default function Testimonials() {
   return (
     <div style={{ background: 'rgba(4,4,3,1)' }}>
-    <section style={{ padding: '80px 40px 100px', maxWidth: 1200, margin: '0 auto' }}>
+    <section className="section-pad" style={{ padding: '80px 40px 100px', maxWidth: 1200, margin: '0 auto' }}>
       <h2 style={{
         fontFamily: 'var(--font-mono)',
         fontSize: 10,

@@ -53,7 +53,7 @@ export default function TravelSeries() {
       onMouseLeave={() => setPaused(false)}
     >
       {/* Highlights reel embed */}
-      <div style={{
+      <div className="section-pad" style={{
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -106,6 +106,7 @@ export default function TravelSeries() {
       {/* 3D carousel */}
       <div
         {...bind()}
+        className="carousel-stage"
         style={{
           perspective: 1200,
           perspectiveOrigin: '50% 50%',
@@ -114,7 +115,9 @@ export default function TravelSeries() {
           justifyContent: 'center',
           height: 360,
           position: 'relative',
-          touchAction: 'none',
+          // pan-y, not none — otherwise a touch that starts on the carousel
+          // can never scroll the page vertically
+          touchAction: 'pan-y',
         }}
       >
         {episodes.map((ep, i) => {
@@ -137,27 +140,37 @@ export default function TravelSeries() {
 
       <VideoLightbox source={lightboxSrc} onClose={closeLightbox} />
 
-      {/* Dot indicators */}
-      <div style={{
+      {/* Dot indicators — 6px pill inside a padded, finger-sized hit area */}
+      <div className="carousel-dots" style={{
         display: 'flex',
         justifyContent: 'center',
         gap: 8,
-        marginTop: 32,
+        marginTop: 19, // 32 less the button's 13px vertical hit padding
       }}>
         {episodes.map((_, i) => (
           <button
             key={i}
             onClick={() => setActive(i)}
+            aria-label={`Go to episode ${i + 1}`}
+            aria-current={i === active}
             style={{
+              display: 'flex',
+              alignItems: 'center',
+              background: 'none',
+              border: 'none',
+              padding: '13px 4px',
+              lineHeight: 0,
+            }}
+          >
+            <span style={{
+              display: 'block',
               width: i === active ? 20 : 6,
               height: 6,
               borderRadius: 3,
               background: i === active ? 'var(--gold)' : 'var(--fg-faint)',
-              border: 'none',
-              padding: 0,
               transition: 'width 0.3s ease, background 0.3s ease',
-            }}
-          />
+            }} />
+          </button>
         ))}
       </div>
     </section>

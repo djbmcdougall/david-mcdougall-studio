@@ -61,6 +61,7 @@ export default function PortfolioGrid() {
     <section
       id="work"
       ref={sectionRef}
+      className="section-pad"
       style={{ padding: '40px 40px 100px', maxWidth: 1200, margin: '0 auto' }}
     >
       {/* Cursor-following image — fixed, rendered once at section level */}
@@ -222,6 +223,7 @@ function WorkRow({ item, index, onPlay, onHover }: {
       }}
       onHoverEnd={() => { setHovered(false); setNearPlay(false); onHover(null) }}
       onClick={() => item.link && onPlay(item.link)}
+      className="work-row"
       style={{
         position: 'relative',
         display: 'flex',
@@ -245,7 +247,7 @@ function WorkRow({ item, index, onPlay, onHover }: {
       />
 
       {/* Index */}
-      <span style={{
+      <span className="work-row-index" style={{
         fontFamily: 'var(--font-mono)',
         fontSize: 9,
         letterSpacing: '0.12em',
@@ -258,6 +260,7 @@ function WorkRow({ item, index, onPlay, onHover }: {
 
       {/* Title */}
       <motion.h3
+        className="work-row-title"
         animate={{
           x: hovered ? 16 : 0,
           color: hovered ? 'var(--gold)' : 'var(--fg)',
@@ -279,14 +282,14 @@ function WorkRow({ item, index, onPlay, onHover }: {
       </motion.h3>
 
       {/* Client + type */}
-      <div style={{
+      <div className="work-row-meta" style={{
         display: 'flex',
         gap: 32,
         alignItems: 'baseline',
         flexShrink: 0,
         zIndex: 1,
       }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'flex-end', transform: 'translateY(-1px)' }}>
+        <div className="work-row-names" style={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'flex-end', transform: 'translateY(-1px)' }}>
           {item.role && (
             <span style={{
               fontFamily: 'var(--font-mono)',
@@ -308,7 +311,7 @@ function WorkRow({ item, index, onPlay, onHover }: {
             {item.client}
           </span>
         </div>
-        <span style={{
+        <span className="work-row-type" style={{
           fontFamily: 'var(--font-mono)',
           fontSize: 9,
           letterSpacing: '0.12em',
@@ -324,6 +327,7 @@ function WorkRow({ item, index, onPlay, onHover }: {
       {/* Gold play button */}
       {item.link && (
         <motion.div
+          className="work-row-play"
           onMouseEnter={() => { setNearPlay(true); onHover(null) }}
           onMouseLeave={() => { setNearPlay(false); if (hovered) onHover(item.thumb ?? null) }}
           animate={{
@@ -407,7 +411,7 @@ function DigitalCarousel({ items }: { items: (typeof portfolio) }) {
             transition={{ duration: 0.5, delay: i * 0.08, ease: [0.32, 0.72, 0, 1] }}
             style={{
               flexShrink: 0,
-              width: 480,
+              width: 'min(480px, 82vw)',
               scrollSnapAlign: 'start',
               position: 'relative',
               cursor: item.link ? 'pointer' : 'default',

@@ -6,6 +6,7 @@ export default function Tagline() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.1, ease: [0.32, 0.72, 0, 1], delay: 0.2 }}
+      className="section-pad"
       style={{
         padding: '100px 40px 72px',
         textAlign: 'center',

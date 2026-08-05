@@ -8,7 +8,7 @@ export default function Footer() {
   ]
 
   return (
-    <footer style={{
+    <footer className="section-pad" style={{
       padding: '40px 40px 48px',
       maxWidth: 1200,
       margin: '0 auto',
@@ -20,7 +20,7 @@ export default function Footer() {
         marginBottom: 40,
       }} />
 
-      <div style={{
+      <div className="footer-row" style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -46,7 +46,7 @@ export default function Footer() {
         </div>
 
         {/* Right: social links */}
-        <div style={{ display: 'flex', gap: 28, alignItems: 'center' }}>
+        <div className="footer-social" style={{ display: 'flex', gap: 28, alignItems: 'center' }}>
           {links.map(({ label, href }) => (
             <a
               key={label}

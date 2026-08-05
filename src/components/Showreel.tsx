@@ -30,7 +30,7 @@ const REELS = [
 
 export default function Showreel() {
   return (
-    <section id="showreel" style={{ padding: '0 40px 120px', maxWidth: 1200, margin: '0 auto' }}>
+    <section id="showreel" className="section-pad" style={{ padding: '0 40px 120px', maxWidth: 1200, margin: '0 auto' }}>
       <div className="showreel-grid" style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(4, 1fr)',
@@ -166,7 +166,7 @@ function ReelBox({ reel, index }: { reel: typeof REELS[0]; index: number }) {
           )}
 
           {/* HUD readout */}
-          <div style={{
+          <div className="reel-hud" style={{
             position: 'absolute',
             bottom: 14,
             left: '50%',

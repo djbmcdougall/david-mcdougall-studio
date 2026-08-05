@@ -35,6 +35,7 @@ export default function Pillars() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
+      className="section-pad"
       style={{
         padding: '0 40px 60px',
         maxWidth: 1200,
