@@ -357,7 +357,7 @@ export default function CVPage() {
         {/* ── Core Competencies ───────────────────────────────────────── */}
         <div style={RULE} />
         <p style={LABEL}>Core Competencies</p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 12 }}>
           {COMPETENCIES.map((c, i) => (
             <motion.div
               key={c.title}
@@ -482,9 +482,8 @@ export default function CVPage() {
         <p style={LABEL}>AI Tools & Technology</p>
         <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '8px 24px', alignItems: 'baseline' }}>
           {SKILLS.map((s) => (
-            <>
+            <React.Fragment key={s.label}>
               <span
-                key={`label-${s.label}`}
                 style={{
                   fontFamily: 'var(--font-mono)',
                   fontSize: 10,
@@ -496,7 +495,6 @@ export default function CVPage() {
                 {s.label}
               </span>
               <span
-                key={`val-${s.label}`}
                 style={{
                   fontFamily: 'var(--font-sans)',
                   fontSize: 14,
@@ -506,7 +504,7 @@ export default function CVPage() {
               >
                 {s.val}
               </span>
-            </>
+            </React.Fragment>
           ))}
         </div>
 
