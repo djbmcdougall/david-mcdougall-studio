@@ -137,7 +137,7 @@ export default function About() {
 
           {[
             <>I've sat across the table from heads of state and on the ground with refugees who had lost everything.</>,
-            <>Twenty years shooting, directing, and producing for BBC, Al Jazeera, Channel 4, PBS, Discovery, and National Geographic taught me what no film school can: how to find the real story under pressure, deliver on budget, and hit deadlines that matter.</>,
+            <>Twenty years shooting and producing for BBC, Al Jazeera, Channel 4, PBS, Discovery, and National Geographic taught me what no film school can: how to find the real story under pressure, deliver on budget, and hit deadlines that matter.</>,
             <>My <a href="https://en.wikipedia.org/wiki/Afghan_Massacre:_The_Convoy_of_Death" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)', textDecoration: 'none', borderBottom: '0.5px solid rgba(200,169,110,0.4)', paddingBottom: 1 }}>first broadcast film</a> exposed a major military incident in Afghanistan, won multiple awards, and aired on CBC, Channel 5 and ZDF. The Journey, my 15-part dual-language series for Al Jazeera, reached over 50 million viewers worldwide.</>,
             <>After nine years building The Wired Agency — creating premium content for clients including Qatar Foundation, Harrods, Land Rover, and Qatar Airlines — I closed it in 2023 to go solo.</>,
             <>Today I run a one-man cinematic studio at the forefront of AI-native production. Using Kling, Sora, Runway, ElevenLabs and a host of other generative AI platforms, I deliver broadcast-ready video.</>,
@@ -172,7 +172,7 @@ export default function About() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
             {[
               { label: 'Broadcaster', value: 'BBC · Al Jazeera · Channel 4 · PBS' },
-              { label: 'Experience', value: '20+ years directing' },
+              { label: 'Experience', value: '20+ years producing' },
               { label: 'Countries', value: '50+ on location' },
               { label: 'Current mode', value: 'AI-augmented solo studio' },
             ].map(({ label, value }) => (

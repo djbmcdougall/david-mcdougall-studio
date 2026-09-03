@@ -16,7 +16,7 @@ export const FAQ_ITEMS = [
   },
   {
     q: 'Is the quality actually broadcast standard?',
-    a: "Yes. Twenty years directing for BBC, Al Jazeera, Channel 4, PBS, Discovery and National Geographic set the bar — the AI tools are how it's produced, not a lowering of the standard.",
+    a: "Yes. Twenty years producing for BBC, Al Jazeera, Channel 4, PBS, Discovery and National Geographic set the bar — the AI tools are how it's produced, not a lowering of the standard.",
   },
   {
     q: 'What do you need from me to start?',
