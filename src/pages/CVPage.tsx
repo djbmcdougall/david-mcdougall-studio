@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 const B = ({ children }: { children: React.ReactNode }) => (
@@ -20,10 +20,8 @@ const JOBS: { title: string; company: string; location: string; dates: string; b
     location: 'Richmond, North Yorkshire',
     dates: 'Mar 2023 – Present',
     bullets: [
-      <>Built <B>Voco</B> — a production-grade Voice AI assistant integrating ElevenLabs, Vapi, and LLM backends for automated, context-aware outbound calling and inbound handling.</>,
-      <>Developing <B>MintSkills</B> — a verified commercial marketplace for agent-native developer tools, featuring a proprietary 4-stage security and verification pipeline.</>,
-      <>Architected AI-native media pipelines combining generative video (<B>Runway ML</B>, <B>Kling</B>, <B>Sora</B>) with advanced audio synthesis — compressing broadcast-quality production timelines by 60–80%.</>,
-      'Produced AI-native short-form content demonstrating generative storytelling workflows for social and creator audiences across YouTube and Instagram.',
+      <>Runs a one-person AI-native production studio using <B>Sora</B>, <B>Runway</B>, <B>Kling</B>, <B>Higgsfield</B>, <B>ElevenLabs</B> and <B>Udio</B> to compress broadcast-quality production timelines by 60–80%.</>,
+      'Applies two decades of editorial judgement to frontier generative-video and voice-AI tooling — current, hands-on evidence of how AI can accelerate multiplatform newsroom output.',
     ],
   },
   {
@@ -33,8 +31,8 @@ const JOBS: { title: string; company: string; location: string; dates: string; b
     dates: 'Sep 2013 – Feb 2023',
     bullets: [
       <>Series-directed <em>The Journey</em> — a 15-part bilingual (Arabic/English) travel documentary for <B>Al Jazeera</B>, reaching 50M+ viewers across MENA.</>,
-      <>Led high-budget visual storytelling campaigns and localised multi-language content for <B>Total</B>, <B>Harrods</B>, <B>Land Rover</B>, <B>Qatar Airways</B>, Hamad International Airport, and <B>Qatar Foundation</B>.</>,
-      'Managed multi-disciplinary international crews across complex cross-border productions with multi-lingual post-production mastering.',
+      'Nine years building and mentoring multi-disciplinary international crews and producers across complex, cross-border productions, with full editorial oversight from development through delivery.',
+      <>Delivered premium branded content and documentary work for <B>Qatar Foundation</B>, <B>Harrods</B>, <B>Land Rover</B>, <B>Qatar Airways</B>, <B>Emirates Airlines</B>, Jumeirah, <B>Total</B>, Hamad International Airport and <B>Armani</B>, coordinating storytelling across linear, digital and social platforms.</>,
     ],
   },
   {
@@ -43,7 +41,7 @@ const JOBS: { title: string; company: string; location: string; dates: string; b
     location: 'Doha, Qatar',
     dates: 'Sep 2018 – Feb 2020',
     bullets: [
-      <>Designed, built, and launched high-impact TV programming, promotional campaigns, and digital content for a new English-language broadcast channel. (Embedded secondment from The Wired Agency.)</>,
+      <>Designed and launched a new English-language multiplatform broadcast channel for a national state broadcaster — TV programming, promotional campaigns and digital content, development through daily production operations. (Embedded secondment from The Wired Agency.)</>,
     ],
   },
   {
@@ -87,23 +85,31 @@ const JOBS: { title: string; company: string; location: string; dates: string; b
     dates: 'Sep 2001 – Apr 2003',
     bullets: [
       'Investigations and current affairs documentary production.',
+      <>Directed the multi-award-winning investigative documentary <em>Afghan Massacre: The Convoy of Death</em>, broadcast on <B>Channel 5</B>, <B>CBC</B> and <B>ZDF</B>.</>,
     ],
   },
 ]
 
 const COMPETENCIES = [
   {
-    title: 'AI & Voice',
-    body: 'Generative AI video & audio · Voice AI (ElevenLabs, Vapi) · Prompt engineering · Agent-native development · LLM workflows & MCP',
+    title: 'Broadcast & Editorial',
+    body: 'Live & multiplatform broadcast production · Editorial leadership & mentoring · Investigative & long-form documentary · Digital news & social content · Executive producing',
   },
   {
-    title: 'Production & Direction',
-    body: 'Documentary filmmaking · Broadcast series direction · Branded & social content · Executive producing · Post-production & editing',
+    title: 'Global & Operational',
+    body: 'International newsroom leadership (MENA/Doha) · Cross-border crew management · Multi-language/multi-market localisation · Linear + digital + social content strategy · Post-production & delivery oversight',
   },
   {
-    title: 'Creative & Strategy',
-    body: 'Narrative development · Content strategy & GEO · Brand storytelling · Cross-platform localisation · AI creative consulting',
+    title: 'Innovation',
+    body: 'Generative AI video & audio production · Voice AI (ElevenLabs, Vapi) · AI-assisted production workflows · Prompt engineering · Rapid-turnaround multiplatform delivery',
   },
+]
+
+const HIGHLIGHTS: React.ReactNode[] = [
+  <>20+ years directing for <B>BBC</B>, <B>Al Jazeera</B>, <B>Channel 4</B>, <B>PBS</B>, <B>Discovery</B>, and <B>National Geographic</B>.</>,
+  <>Directed the multi-award-winning investigative documentary <em>Afghan Massacre: The Convoy of Death</em>, broadcast on <B>Channel 5</B>, <B>CBC</B> and <B>ZDF</B>.</>,
+  <>Series-directed <em>The Journey</em>, a 15-part bilingual travel documentary for <B>Al Jazeera</B>, reaching 50M+ viewers across MENA.</>,
+  <>Senior Producer (embedded secondment, <B>Qatar Media Corporation</B>): designed and launched a new English-language multiplatform broadcast channel for a national state broadcaster — TV programming, promotional campaigns and digital content, development through daily production operations.</>,
 ]
 
 const SKILLS = [
@@ -134,6 +140,16 @@ const LABEL: React.CSSProperties = {
 }
 
 export default function CVPage() {
+  useEffect(() => {
+    document.title = 'David McDougall — Executive Producer · Supervising Producer | Broadcast, Digital & Multiplatform News'
+    const meta = document.querySelector('meta[name="description"]')
+    if (meta) meta.setAttribute('content', 'Broadcast executive producer and editorial leader with 20+ years for BBC, Al Jazeera, Channel 4, Discovery, National Geographic and PBS, including nine years leading multiplatform production in Doha, Qatar.')
+    return () => {
+      document.title = 'David McDougall — Filmmaker & AI Creative Director | BBC · Al Jazeera'
+      if (meta) meta.setAttribute('content', 'Award-winning filmmaker and AI Creative Director delivering broadcast-quality documentary, branded content, and AI-native film for BBC, Al Jazeera, and global brands. Twenty years of craft. One director.')
+    }
+  }, [])
+
   return (
     <main style={{ paddingTop: 84, minHeight: '100vh' }}>
       <div style={{ maxWidth: 860, margin: '0 auto', padding: '60px 40px 100px' }}>
@@ -188,11 +204,25 @@ export default function CVPage() {
               marginBottom: 14,
             }}
           >
-            AI Creative Producer · Voice AI Specialist · Documentary Filmmaker
+            Executive Producer · Supervising Producer — Broadcast, Digital &amp; Multiplatform News
+          </motion.p>
+
+          <motion.p
+            variants={fadeUp} custom={2}
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: 10,
+              letterSpacing: '0.16em',
+              textTransform: 'uppercase',
+              color: 'var(--fg-dim)',
+              marginBottom: 14,
+            }}
+          >
+            AI-Native Production Innovator
           </motion.p>
 
           <motion.div
-            variants={fadeUp} custom={2}
+            variants={fadeUp} custom={3}
             style={{
               fontFamily: 'var(--font-mono)',
               fontSize: 10,
@@ -223,11 +253,11 @@ export default function CVPage() {
           </motion.div>
 
           {/* Gold rule under header */}
-          <motion.div variants={fadeUp} custom={3} style={RULE_GOLD} />
+          <motion.div variants={fadeUp} custom={4} style={RULE_GOLD} />
 
           {/* ── Download CTA ─────────────────────────────────────────── */}
           <motion.div
-            variants={fadeUp} custom={4}
+            variants={fadeUp} custom={5}
             style={{ display: 'flex', alignItems: 'center', gap: 16, marginTop: 24 }}
           >
             <a
@@ -272,24 +302,62 @@ export default function CVPage() {
             maxWidth: '72ch',
           }}
         >
-          Documentary filmmaker and creative director with 20+ years across BBC,
-          Al Jazeera, Channel 4, Discovery, National Geographic, and PBS — now
-          building at the intersection of AI, voice, and cinematic storytelling.
-          Founder of Murmur Labs Ltd, an AI-native studio developing voice-first
-          products and aural intelligence platforms. Deep hands-on experience with
-          generative AI video and audio production pipelines, advanced ElevenLabs
-          API deployment, prompt engineering for creative applications, and
-          AI-assisted content strategy. Fluent in the full production stack from
-          concept to delivery — and in the emerging agent-native tooling reshaping
-          the media landscape. An early adopter of blockchain since 2013, I've
-          followed the space closely ever since and architected Cull Carbon, a
-          carbon-offset venture, around an on-chain verification layer.
+          Broadcast executive producer and editorial leader with 20+ years
+          directing and producing for BBC, Al Jazeera, Channel 4, Discovery,
+          National Geographic and PBS, including nine years based in Doha, Qatar
+          leading multiplatform production for regional and international
+          broadcasters and brands. Series-directed <em>The Journey</em>, a 15-part
+          bilingual (Arabic/English) travel documentary for Al Jazeera reaching
+          50M+ viewers, and directed the multi-award-winning investigative
+          documentary <em>Afghan Massacre: The Convoy of Death</em> (Channel 5,
+          CBC, ZDF). On secondment as Senior Producer to Qatar Media Corporation,
+          designed and launched TV programming and digital content for a new
+          English-language broadcast channel. Brings this editorial and production
+          leadership together with hands-on fluency in AI-native production
+          pipelines — a rare ability to modernise multiplatform news workflows
+          without compromising editorial rigour.
         </motion.p>
+
+        {/* ── Career Highlights ───────────────────────────────────────── */}
+        <div style={RULE} />
+        <p style={LABEL}>Career Highlights</p>
+        <ul style={{ listStyle: 'none', padding: 0 }}>
+          {HIGHLIGHTS.map((h, i) => (
+            <motion.li
+              key={i}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.06, duration: 0.45, ease: [0.32, 0.72, 0, 1] }}
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: 14,
+                lineHeight: 1.7,
+                color: 'var(--fg-dim)',
+                paddingLeft: 18,
+                position: 'relative',
+                marginBottom: 8,
+                maxWidth: '72ch',
+              }}
+            >
+              <span style={{
+                position: 'absolute',
+                left: 0,
+                color: 'var(--gold)',
+                fontSize: 10,
+                top: 4,
+              }}>
+                ▸
+              </span>
+              {h}
+            </motion.li>
+          ))}
+        </ul>
 
         {/* ── Core Competencies ───────────────────────────────────────── */}
         <div style={RULE} />
         <p style={LABEL}>Core Competencies</p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 12 }}>
           {COMPETENCIES.map((c, i) => (
             <motion.div
               key={c.title}
@@ -414,9 +482,8 @@ export default function CVPage() {
         <p style={LABEL}>AI Tools & Technology</p>
         <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '8px 24px', alignItems: 'baseline' }}>
           {SKILLS.map((s) => (
-            <>
+            <React.Fragment key={s.label}>
               <span
-                key={`label-${s.label}`}
                 style={{
                   fontFamily: 'var(--font-mono)',
                   fontSize: 10,
@@ -428,7 +495,6 @@ export default function CVPage() {
                 {s.label}
               </span>
               <span
-                key={`val-${s.label}`}
                 style={{
                   fontFamily: 'var(--font-sans)',
                   fontSize: 14,
@@ -438,7 +504,7 @@ export default function CVPage() {
               >
                 {s.val}
               </span>
-            </>
+            </React.Fragment>
           ))}
         </div>
 
