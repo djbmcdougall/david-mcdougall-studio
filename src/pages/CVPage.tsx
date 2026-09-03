@@ -85,7 +85,7 @@ const JOBS: { title: string; company: string; location: string; dates: string; b
     dates: 'Sep 2001 – Apr 2003',
     bullets: [
       'Investigations and current affairs documentary production.',
-      <>Directed the multi-award-winning investigative documentary <em>Afghan Massacre: The Convoy of Death</em>, broadcast on <B>Channel 5</B>, <B>CBC</B> and <B>ZDF</B>.</>,
+      <>Co-produced the multi-award-winning investigative documentary <em>Afghan Massacre: The Convoy of Death</em>, broadcast on <B>Channel 5</B>, <B>CBC</B> and <B>ZDF</B>.</>,
     ],
   },
 ]
@@ -107,7 +107,7 @@ const COMPETENCIES = [
 
 const HIGHLIGHTS: React.ReactNode[] = [
   <>20+ years directing for <B>BBC</B>, <B>Al Jazeera</B>, <B>Channel 4</B>, <B>PBS</B>, <B>Discovery</B>, and <B>National Geographic</B>.</>,
-  <>Directed the multi-award-winning investigative documentary <em>Afghan Massacre: The Convoy of Death</em>, broadcast on <B>Channel 5</B>, <B>CBC</B> and <B>ZDF</B>.</>,
+  <>Co-produced the multi-award-winning investigative documentary <em>Afghan Massacre: The Convoy of Death</em>, broadcast on <B>Channel 5</B>, <B>CBC</B> and <B>ZDF</B>.</>,
   <>Series-directed <em>The Journey</em>, a 15-part bilingual travel documentary for <B>Al Jazeera</B>, reaching 50M+ viewers across MENA.</>,
   <>Senior Producer (embedded secondment, <B>Qatar Media Corporation</B>): designed and launched a new English-language multiplatform broadcast channel for a national state broadcaster — TV programming, promotional campaigns and digital content, development through daily production operations.</>,
 ]
@@ -308,7 +308,7 @@ export default function CVPage() {
           leading multiplatform production for regional and international
           broadcasters and brands. Series-directed <em>The Journey</em>, a 15-part
           bilingual (Arabic/English) travel documentary for Al Jazeera reaching
-          50M+ viewers, and directed the multi-award-winning investigative
+          50M+ viewers, and co-produced the multi-award-winning investigative
           documentary <em>Afghan Massacre: The Convoy of Death</em> (Channel 5,
           CBC, ZDF). On secondment as Senior Producer to Qatar Media Corporation,
           designed and launched TV programming and digital content for a new
