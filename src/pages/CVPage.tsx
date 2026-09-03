@@ -106,7 +106,7 @@ const COMPETENCIES = [
 ]
 
 const HIGHLIGHTS: React.ReactNode[] = [
-  <>20+ years directing for <B>BBC</B>, <B>Al Jazeera</B>, <B>Channel 4</B>, <B>PBS</B>, <B>Discovery</B>, and <B>National Geographic</B>.</>,
+  <>20+ years producing for <B>BBC</B>, <B>Al Jazeera</B>, <B>Channel 4</B>, <B>PBS</B>, <B>Discovery</B>, and <B>National Geographic</B>.</>,
   <>Co-produced the multi-award-winning investigative documentary <em>Afghan Massacre: The Convoy of Death</em>, broadcast on <B>Channel 5</B>, <B>CBC</B> and <B>ZDF</B>.</>,
   <>Series-directed <em>The Journey</em>, a 15-part bilingual travel documentary for <B>Al Jazeera</B>, reaching 50M+ viewers across MENA.</>,
   <>Senior Producer (embedded secondment, <B>Qatar Media Corporation</B>): designed and launched a new English-language multiplatform broadcast channel for a national state broadcaster — TV programming, promotional campaigns and digital content, development through daily production operations.</>,
