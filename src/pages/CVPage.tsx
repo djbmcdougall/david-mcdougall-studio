@@ -145,8 +145,8 @@ export default function CVPage() {
     const meta = document.querySelector('meta[name="description"]')
     if (meta) meta.setAttribute('content', 'Broadcast executive producer and editorial leader with 20+ years for BBC, Al Jazeera, Channel 4, Discovery, National Geographic and PBS, including nine years leading multiplatform production in Doha, Qatar.')
     return () => {
-      document.title = 'David McDougall — Filmmaker & AI Creative Director | BBC · Al Jazeera'
-      if (meta) meta.setAttribute('content', 'Award-winning filmmaker and AI Creative Director delivering broadcast-quality documentary, branded content, and AI-native film for BBC, Al Jazeera, and global brands. Twenty years of craft. One director.')
+      document.title = 'David McDougall — Executive Producer & Series Director | Broadcast, Digital & Multiplatform News'
+      if (meta) meta.setAttribute('content', 'Executive producer and series director. 20+ years for BBC, Al Jazeera, Channel 4, Discovery and PBS. Broadcast, digital and multiplatform production.')
     }
   }, [])
 

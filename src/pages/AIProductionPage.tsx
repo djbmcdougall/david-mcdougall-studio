@@ -47,8 +47,8 @@ export default function AIProductionPage() {
     const meta = document.querySelector('meta[name="description"]')
     if (meta) meta.setAttribute('content', 'Broadcast-quality AI video, synthetic voice, and original music for brands. One director, full-stack AI pipeline. Brief to delivery in days. David McDougall — 20 years directing for BBC, Al Jazeera, and Channel 4.')
     return () => {
-      document.title = 'David McDougall — Filmmaker & AI Creative Director | BBC · Al Jazeera'
-      if (meta) meta.setAttribute('content', 'Award-winning filmmaker and AI Creative Director delivering broadcast-quality documentary, branded content, and AI-native film for BBC, Al Jazeera, and global brands. Twenty years of craft. One director.')
+      document.title = 'David McDougall — Executive Producer & Series Director | Broadcast, Digital & Multiplatform News'
+      if (meta) meta.setAttribute('content', 'Executive producer and series director. 20+ years for BBC, Al Jazeera, Channel 4, Discovery and PBS. Broadcast, digital and multiplatform production.')
     }
   }, [])
 

@@ -44,7 +44,7 @@ export default function Pillars() {
     >
       {/* Visually hidden h2 for SEO */}
       <h2 style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap' }}>
-        Filmmaker & AI Creative Director Services
+        Executive Producer & Series Director — Broadcast, Digital & Multiplatform Production
       </h2>
       {/* Section eyebrow */}
       <div style={{

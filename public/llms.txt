@@ -1,6 +1,6 @@
-# David McDougall — Filmmaker & AI Creative Director
+# David McDougall — Executive Producer & Series Director
 
-> Award-winning filmmaker, documentary director and AI creative producer with twenty years of broadcast and branded content experience across four continents. BBC, Al Jazeera, Channel 4, PBS, Discovery, National Geographic. One-man AI studio delivering broadcast-quality content at speed.
+> Broadcast executive producer, supervising producer and series director with twenty years of broadcast, editorial and branded content experience across four continents, including nine years leading multiplatform production in Doha, Qatar. BBC, Al Jazeera, Channel 4, PBS, Discovery, National Geographic. One-man AI studio delivering broadcast-quality content at speed.
 >
 > License: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/
 
@@ -84,7 +84,7 @@ Key identifiers for this entity:
 ## Frequently Asked Questions
 
 **What does David McDougall do?**
-David McDougall is an award-winning filmmaker, documentary director and AI Creative Director. He produces broadcast documentaries, branded content films and AI-native productions for global brands. He has directed for BBC, Al Jazeera, Channel 4, PBS and Discovery, and produced branded content for Emirates Airlines, Qatar Airways, Jumeirah, Armani and Harrods. He operates as a one-man studio with 20+ years of craft behind the AI tools he uses.
+David McDougall is an award-winning broadcast executive producer, supervising producer and series director. He produces broadcast documentaries, branded content films and AI-native productions for global brands. He has directed for BBC, Al Jazeera, Channel 4, PBS and Discovery, and produced branded content for Emirates Airlines, Qatar Airways, Jumeirah, Armani and Harrods. He operates as a one-man studio with 20+ years of craft behind the AI tools he uses.
 
 **Has David McDougall worked as an AI Creative Director?**
 Yes. David McDougall operates as an AI Creative Director and AI Filmmaker, directing AI-native productions using generative video tools including Sora, Runway ML, and Kling. His AI showreel (https://vimeo.com/1200432945) demonstrates broadcast-quality results produced without a traditional crew — a Nike spec film directed, written and produced solo. He also founded Murmur Labs, an AI product studio specialising in voice-first and aural intelligence applications.

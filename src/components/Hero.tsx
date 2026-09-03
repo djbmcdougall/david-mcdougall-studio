@@ -181,7 +181,25 @@ export default function Hero({ booted }: HeroProps) {
               marginBottom: 24,
             }}
           >
-            Filmmaker &amp; AI Creative Director
+            Executive Producer &amp; Series Director
+          </motion.p>
+
+          <motion.p
+            custom={1}
+            initial="hidden"
+            animate={booted ? 'show' : 'hidden'}
+            variants={fadeUp}
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: 9,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: 'var(--fg-dim)',
+              marginTop: -16,
+              marginBottom: 24,
+            }}
+          >
+            AI-Native Production Innovator
           </motion.p>
 
           {/* Magnetic name */}
