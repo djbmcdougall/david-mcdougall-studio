@@ -303,7 +303,7 @@ export default function CVPage() {
           }}
         >
           Broadcast executive producer and editorial leader with 20+ years
-          directing and producing for BBC, Al Jazeera, Channel 4, Discovery,
+          producing for BBC, Al Jazeera, Channel 4, Discovery,
           National Geographic and PBS, including nine years based in Doha, Qatar
           leading multiplatform production for regional and international
           broadcasters and brands. Series-directed <em>The Journey</em>, a 15-part
