@@ -50,7 +50,7 @@ export default function Nav() {
           boxShadow: '0 0 0 1px rgba(232,226,213,0.04), 0 8px 32px rgba(0,0,0,0.4)',
         }}>
           {/* Wordmark */}
-          <span style={{
+          <span className="nav-wordmark" style={{
             fontFamily: 'var(--font-mono)',
             fontSize: 9,
             letterSpacing: '0.22em',
@@ -62,7 +62,7 @@ export default function Nav() {
           </span>
 
           {/* REC indicator */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+          <div className="nav-rec" style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
             <span style={{
               display: 'inline-block',
               width: 6,
@@ -83,7 +83,7 @@ export default function Nav() {
           </div>
 
           {/* Divider */}
-          <div style={{ width: 1, height: 16, background: 'var(--border)', flexShrink: 0 }} />
+          <div className="nav-divider" style={{ width: 1, height: 16, background: 'var(--border)', flexShrink: 0 }} />
 
           {/* Desktop links */}
           <div className="nav-desktop-links" style={{ display: 'flex', gap: 20 }}>

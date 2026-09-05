@@ -31,9 +31,14 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Offset anchor scrolling to clear the fixed nav pill (64px) */
+/* Offset anchor scrolling to clear the fixed nav pill */
 section[id] {
   scroll-margin-top: 80px;
+}
+
+/* Reserve space below the nav pill so content isn't hidden behind it on load */
+#root > *:first-child {
+  padding-top: 0;
 }
 
 body {
@@ -95,6 +100,9 @@ a {
 @media (max-width: 768px) {
   .nav-desktop-links { display: none !important; }
   .nav-hamburger      { display: flex !important; }
+  .nav-wordmark       { display: none !important; }
+  .nav-rec            { display: none !important; }
+  .nav-divider        { display: none !important; }
 
   /* Showreel: stack reels vertically */
   .showreel-grid {
@@ -219,6 +227,14 @@ a {
     max-width: calc(100% - 60px);
     text-align: center;
     line-height: 1.6;
+  }
+
+  /* Mono labels: 8-9px is too small to scan on mobile */
+  .reel-hud,
+  .work-row-meta span,
+  .portfolio-tab {
+    font-size: 11px !important;
+    letter-spacing: 0.14em !important;
   }
 
   /* Footer: wordmark above links rather than a squeezed row */

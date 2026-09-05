@@ -91,9 +91,19 @@ export default function CTA() {
         letterSpacing: '0.22em',
         textTransform: 'uppercase',
         color: 'var(--gold)',
-        marginBottom: 48,
+        marginBottom: 12,
       }}>
-        Commission a film
+        Discuss a commission
+      </p>
+      <p style={{
+        fontFamily: 'var(--font-mono)',
+        fontSize: 9,
+        letterSpacing: '0.16em',
+        textTransform: 'uppercase',
+        color: 'rgba(232,226,213,0.3)',
+        marginBottom: 40,
+      }}>
+        Broadcast · Documentary · Branded film · Available worldwide
       </p>
 
       <a href="mailto:davidmcdougall@proton.me" style={{ display: 'inline-block' }}>

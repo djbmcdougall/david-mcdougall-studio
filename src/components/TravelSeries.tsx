@@ -14,6 +14,7 @@ export default function TravelSeries() {
   const [active, setActive] = useState(0)
   const [paused, setPaused] = useState(false)
   const [lightboxSrc, setLightboxSrc] = useState<VideoSource | null>(null)
+  const [highlightLoaded, setHighlightLoaded] = useState(false)
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   const openLightbox = useCallback((youtubeId: string) => {
@@ -78,14 +79,59 @@ export default function TravelSeries() {
           background: '#000',
           boxShadow: '0 24px 64px rgba(0,0,0,0.6)',
           border: '1px solid rgba(200,169,110,0.12)',
+          position: 'relative',
+          overflow: 'hidden',
         }}>
-          <iframe
-            title="The Journey — Highlights Reel"
-            src="https://player.vimeo.com/video/274317445?h=ab8b87d6e8&color=c8a96e&title=0&byline=0&portrait=0"
-            style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-          />
+          {highlightLoaded ? (
+            <iframe
+              title="The Journey — Highlights Reel"
+              src="https://player.vimeo.com/video/274317445?autoplay=1&h=ab8b87d6e8&color=c8a96e&title=0&byline=0&portrait=0"
+              style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
+          ) : (
+            <>
+              <img
+                src="https://vumbnail.com/274317445.jpg"
+                alt=""
+                aria-hidden
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.7 }}
+              />
+              <button
+                onClick={() => setHighlightLoaded(true)}
+                aria-label="Play The Journey highlights reel"
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'rgba(7,7,6,0.3)',
+                  border: 'none',
+                  cursor: 'pointer',
+                  width: '100%',
+                  height: '100%',
+                }}
+              >
+                <div style={{
+                  width: 56,
+                  height: 56,
+                  borderRadius: '50%',
+                  border: '1px solid rgba(200,169,110,0.5)',
+                  background: 'rgba(7,7,6,0.6)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backdropFilter: 'blur(4px)',
+                }}>
+                  <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden>
+                    <path d="M5 3L13 8L5 13V3Z" fill="rgba(200,169,110,0.9)" />
+                  </svg>
+                </div>
+              </button>
+            </>
+          )}
         </div>
       </div>
 

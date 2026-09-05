@@ -142,7 +142,6 @@ export default function About() {
             <>After nine years building The Wired Agency — creating premium content for clients including Qatar Foundation, Harrods, Land Rover, and Qatar Airlines — I closed it in 2023 to go solo.</>,
             <>Today I run a one-man cinematic studio at the forefront of AI-native production. Using Kling, Sora, Runway, ElevenLabs and a host of other generative AI platforms, I deliver broadcast-ready video.</>,
             <>Real craft, frontier tools. Story is still story.</>,
-            <>I also founded <a href="https://www.murmurlabs.co/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)', textDecoration: 'none', borderBottom: '0.5px solid rgba(200,169,110,0.4)', paddingBottom: 1 }}>Murmur Labs</a>, building voice-first verification infrastructure. Our flagship product, <a href="https://murmur.guide/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)', textDecoration: 'none', borderBottom: '0.5px solid rgba(200,169,110,0.4)', paddingBottom: 1 }}>Murmur.Guide</a>, uses the human voice as its core trust layer.</>,
             <>One director. Clear brief. Fast, exceptional delivery.</>,
           ].map((para, i, arr) => (
             <p key={i} style={{

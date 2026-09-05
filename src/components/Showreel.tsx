@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 
 const REELS = [
@@ -45,24 +45,12 @@ export default function Showreel() {
 }
 
 function ReelBox({ reel, index }: { reel: typeof REELS[0]; index: number }) {
-  const containerRef = useRef<HTMLDivElement>(null)
   const [shouldLoad, setShouldLoad] = useState(false)
   const [thumbError, setThumbError] = useState(false)
 
-  useEffect(() => {
-    const el = containerRef.current
-    if (!el) return
-    const io = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setShouldLoad(true); io.disconnect() } },
-      { rootMargin: '300px' }
-    )
-    io.observe(el)
-    return () => io.disconnect()
-  }, [])
-
   return (
     <motion.div
-      ref={containerRef}
+
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
@@ -103,13 +91,14 @@ function ReelBox({ reel, index }: { reel: typeof REELS[0]; index: number }) {
             <Corner key={pos} pos={pos} />
           ))}
 
-          {/* Vimeo iframe — deferred until near viewport */}
+          {/* Vimeo iframe — loads only when play is tapped */}
           {shouldLoad ? (
             <iframe
-              src={`https://player.vimeo.com/video/${reel.vimeoId}?color=c8a96e&title=0&byline=0&portrait=0${reel.embedExtra}`}
+              src={`https://player.vimeo.com/video/${reel.vimeoId}?autoplay=1&color=c8a96e&title=0&byline=0&portrait=0${reel.embedExtra}`}
               style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
+              title={`Play ${reel.label} reel`}
             />
           ) : (
             <>
@@ -123,24 +112,32 @@ function ReelBox({ reel, index }: { reel: typeof REELS[0]; index: number }) {
               ) : (
                 <img
                   src={`https://vumbnail.com/${reel.vimeoId}.jpg`}
-                  alt={reel.label}
+                  alt=""
+                  aria-hidden
                   loading="lazy"
                   onError={() => setThumbError(true)}
                   style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                 />
               )}
 
-              {/* Play affordance — always visible over thumbnail/fallback */}
-              <div style={{
-                position: 'absolute',
-                inset: 0,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: 'rgba(7,7,6,0.25)',
-                zIndex: 2,
-                pointerEvents: 'none',
-              }}>
+              {/* Play button — clickable, triggers iframe load */}
+              <button
+                onClick={() => setShouldLoad(true)}
+                aria-label={`Play ${reel.label} reel`}
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'rgba(7,7,6,0.25)',
+                  zIndex: 2,
+                  border: 'none',
+                  cursor: 'pointer',
+                  width: '100%',
+                  height: '100%',
+                }}
+              >
                 <div style={{
                   width: 44,
                   height: 44,
@@ -151,6 +148,7 @@ function ReelBox({ reel, index }: { reel: typeof REELS[0]; index: number }) {
                   alignItems: 'center',
                   justifyContent: 'center',
                   backdropFilter: 'blur(4px)',
+                  pointerEvents: 'none',
                 }}>
                   <div style={{
                     width: 0,
@@ -161,7 +159,7 @@ function ReelBox({ reel, index }: { reel: typeof REELS[0]; index: number }) {
                     marginLeft: 3,
                   }} />
                 </div>
-              </div>
+              </button>
             </>
           )}
 
